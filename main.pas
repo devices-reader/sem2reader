@@ -143,9 +143,9 @@ type
     memDial: TMemo;
     pgcMode: TPageControl;
     tbsPort: TTabSheet;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
+    lblPort: TLabel;
+    lblBaud: TLabel;
+    lblParity: TLabel;
     lblTimeoutPort: TLabel;
     cmbComNumber: TComboBox;
     cmbBaud: TComboBox;
@@ -504,7 +504,7 @@ begin
       updShiftMax.Position := ReadInteger(PARAMS, SHIFT_MAX, 0);
 
       updRecordMin.Position := ReadInteger(PARAMS, RECORD_MIN, 0);
-//      updRecordMax.Position := ReadInteger(PARAMS, RECORD_MAX, RECORD2_PAGES-1); ???
+      updRecordMax.Position := ReadInteger(PARAMS, RECORD_MAX, 1000);
 
       updDigits.Position   := FIni.ReadInteger(PARAMS, DIGITS, 4);
       updColWidth.Position := FIni.ReadInteger(PARAMS, COLWIDTH, 12);

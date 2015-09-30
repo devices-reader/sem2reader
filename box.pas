@@ -444,8 +444,6 @@ begin
 
     for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];    
   end;
-
-  // InitGetRecords(wFreePageSize); ???
 end;
 
 procedure BoxRun;

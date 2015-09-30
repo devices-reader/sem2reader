@@ -7,7 +7,7 @@ procedure ShowGetVersion2;
 
 implementation
 
-uses SysUtils, soutput, support, box, kernel, timez, get_memory12;
+uses SysUtils, soutput, support, box, kernel, timez, get_memory12, get_records;
 
 const
   quGetVersion2:   querys = (Action: acGetVersion2; cwOut: 7+1; cwIn: 5+100+2; bNumber: $FF);
@@ -48,6 +48,7 @@ begin
       wPageSize := 1056;
       wFreePageSize := 1040;
     end;
+    InitGetRecords(wFreePageSize);
 
     AddInfo('версия:               ' + IntToStr(j) +'.' + IntToStr(Pop) + '.' + IntToHex(PopInt,4));
     AddInfo('номер сборки:         ' + IntToStr(PopInt));
