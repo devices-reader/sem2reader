@@ -176,6 +176,8 @@ type
     rgrPacket: TRadioGroup;
     edtMemAddr: TEdit;
     edtMemSize: TEdit;
+    lblMemAddr: TLabel;
+    lblMemSize: TLabel;
     procedure ShowConnect;
     procedure SetBaud(dwBaud: longword);
     procedure SetComNumber(wComNumber: word);
