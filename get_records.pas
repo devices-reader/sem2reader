@@ -34,8 +34,8 @@ implementation
 uses SysUtils, kernel, support, soutput, main, timez, realz, box, progress;
 
 const
-  quGetRecords:   querys = (Action: acGetRecords0;  cwOut: 7+3; cwIn: 5+6+1040+2; bNumber: $FF);
-  quGetRecordsX:  querys = (Action: acGetRecordsX0; cwOut: 7+4; cwIn: 5+6+1040+2; bNumber: $FF);
+  quGetRecords:   querys = (Action: acGetRecords0;  cwOut: 7+3; cwIn: 0; bNumber: $FF);
+  quGetRecordsX:  querys = (Action: acGetRecordsX0; cwOut: 7+4; cwIn: 0; bNumber: $FF);
 
 var
   bClass:       byte;

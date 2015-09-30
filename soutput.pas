@@ -263,6 +263,14 @@ begin
       if quT.Action = acGetMemory22   then quT.cwIn := bHEADER+wPageSize+2;
       if quT.Action = acGetMemory23   then quT.cwIn := bHEADER+wPageSize+2;
 
+      if quT.Action = acGetRecords0   then quT.cwIn := 5+6+wFreePageSize+2;
+      if quT.Action = acGetRecords1   then quT.cwIn := 5+6+wFreePageSize+2;
+      if quT.Action = acGetRecords2   then quT.cwIn := 5+6+wFreePageSize+2;
+      if quT.Action = acGetRecords3   then quT.cwIn := 5+6+wFreePageSize+2;
+      if quT.Action = acGetRecords4   then quT.cwIn := 5+6+wFreePageSize+2;
+      if quT.Action = acGetRecords5   then quT.cwIn := 5+6+wFreePageSize+2;
+      if quT.Action = acGetRecordsX0  then quT.cwIn := 5+6+wFreePageSize+2;
+
       queQueryCRC := quT;
 
       InitPushZero;

@@ -1,82 +1,57 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'D:\Home\Delphi\sem2reader\get_records.pas',0,1,48,1,67,0,0,,
+File_0=TSourceModule,'D:\Home\Delphi\sem2reader\soutput.pas',0,1,150,1,168,0,0,,
+File_1=TSourceModule,'D:\Home\Delphi\sem2reader\progress.pas',0,1,1,16,13,0,0,,
+File_2=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdIOHandler.pas',0,1,2249,1,2260,0,0,,
+File_3=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\System\IdGlobal.pas',0,1,1,1,5812,0,0,,
+File_4=TSourceModule,'C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\AdPort.pas',0,1,477,41,483,0,0,,
+File_5=TSourceModule,'D:\Home\Delphi\sem2reader\get_stat1.pas',0,1,58,95,61,0,0,,
+File_6=TSourceModule,'D:\Home\Delphi\sem2reader\get_memory3.pas',0,1,9,36,31,0,0,,
+File_7=TSourceModule,'C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\OoMisc.pas',0,1,4134,1,4146,0,0,,
+File_8=TSourceModule,'D:\Home\Delphi\sem2reader\get_digit.pas',0,1,10,46,29,0,0,,
+File_9=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdTCPClient.pas',0,1,313,1,228,0,0,,
 
 [Modules]
-Module0=D:\Home\Delphi\sem2reader\get_stat1.pas
-Module1=D:\Home\Delphi\sem2reader\main.pas
-Module2=C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\OoMisc.pas
-Module3=D:\Home\Delphi\sem2reader\sem2reader.dproj
-Module4=D:\Home\Delphi\sem2reader\get_memory3.pas
-Module5=D:\Home\Delphi\sem2reader\box.pas
-Module6=D:\Home\Delphi\sem2reader\get_digit.pas
-Module7=D:\Home\Delphi\sem2reader\progress.pas
-Module8=D:\Home\Delphi\sem2reader\soutput.pas
-Module9=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdTCPClient.pas
-Module10=C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\AdPort.pas
-Module11=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdIOHandler.pas
-Module12=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\System\IdGlobal.pas
-Count=13
+Module0=D:\Home\Delphi\sem2reader\main.pas
+Module1=D:\Home\Delphi\sem2reader\box.pas
+Module2=D:\Home\Delphi\sem2reader\get_version2.pas
+Module3=D:\Home\Delphi\sem2reader\get_records.pas
+Module4=D:\Home\Delphi\sem2reader\get_memory1.pas
+Module5=D:\Home\Delphi\sem2reader\get_memory12.pas
+Module6=D:\Home\Delphi\sem2reader\get_memory0.pas
+Count=7
 EditWindowCount=1
-
-[D:\Home\Delphi\sem2reader\get_stat1.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
 
 [D:\Home\Delphi\sem2reader\main.pas]
 ModuleType=TSourceModule
 FormState=1
 FormOnTop=1
 
-[C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\OoMisc.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[D:\Home\Delphi\sem2reader\sem2reader.dproj]
-ModuleType=TBaseProject
-
-[D:\Home\Delphi\sem2reader\get_memory3.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
 [D:\Home\Delphi\sem2reader\box.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[D:\Home\Delphi\sem2reader\get_digit.pas]
+[D:\Home\Delphi\sem2reader\get_version2.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[D:\Home\Delphi\sem2reader\progress.pas]
+[D:\Home\Delphi\sem2reader\get_records.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[D:\Home\Delphi\sem2reader\soutput.pas]
+[D:\Home\Delphi\sem2reader\get_memory1.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdTCPClient.pas]
+[D:\Home\Delphi\sem2reader\get_memory12.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\AdPort.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdIOHandler.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\System\IdGlobal.pas]
+[D:\Home\Delphi\sem2reader\get_memory0.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
@@ -86,8 +61,8 @@ FormState=1
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=13
-CurrentEditView=D:\Home\Delphi\sem2reader\get_stat1.pas
+ViewCount=7
+CurrentEditView=D:\Home\Delphi\sem2reader\main.pas
 View0=0
 View1=1
 View2=2
@@ -95,12 +70,6 @@ View3=3
 View4=4
 View5=5
 View6=6
-View7=7
-View8=8
-View9=9
-View10=10
-View11=11
-View12=12
 PercentageSizes=1
 Create=1
 Visible=1
@@ -117,161 +86,95 @@ ClientHeight=9067
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
-LeftPanelSize=1896
+LeftPanelSize=0
 LeftPanelClients=PropertyInspector,DockSite3
-LeftPanelData=0000080001020100000009000000446F636B5369746533D90B00000000000002FF1B0000000000000100000000D90B00001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelData=000008000101020000001100000050726F7065727479496E73706563746F7209000000446F636B53697465335915000000000000016807000000000000FFFFFFFF
 RightPanelSize=0
 RightPanelClients=DockSite2,DockSite4
 RightPanelData=0000080001010200000009000000446F636B536974653209000000446F636B5369746534591500000000000001D007000000000000FFFFFFFF
-BottomPanelSize=1544
+BottomPanelSize=0
 BottomPanelClients=DockSite1,MessageView
-BottomPanelData=0000080001020100000009000000446F636B5369746531803E0000000000000208060000000000000100000000803E00000F0000004D65737361676556696577466F726DFFFFFFFF
+BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726D1534000000000000021F06000000000000FFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0
 BottomMiddelPanelData=0000080001020100000009000000446F636B53697465309A1D00000000000002F206000000000000FFFFFFFF
 
 [View0]
 CustomEditViewType=TEditView
-Module=D:\Home\Delphi\sem2reader\sem2reader.dpr
-CursorX=1
-CursorY=170
-TopLine=137
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Home\Delphi\sem2reader\sem2reader.dpr
-
-[View1]
-CustomEditViewType=TEditView
-Module=D:\Home\Delphi\sem2reader\soutput.pas
-CursorX=1
-CursorY=168
-TopLine=150
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Home\Delphi\sem2reader\soutput.pas
-
-[View2]
-CustomEditViewType=TEditView
-Module=D:\Home\Delphi\sem2reader\progress.pas
-CursorX=16
-CursorY=13
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Home\Delphi\sem2reader\progress.pas
-
-[View3]
-CustomEditViewType=TEditView
-Module=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdIOHandler.pas
-CursorX=1
-CursorY=2260
-TopLine=2249
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdIOHandler.pas
-
-[View4]
-CustomEditViewType=TEditView
-Module=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\System\IdGlobal.pas
-CursorX=1
-CursorY=5812
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\System\IdGlobal.pas
-
-[View5]
-CustomEditViewType=TEditView
-Module=C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\AdPort.pas
-CursorX=41
-CursorY=483
-TopLine=477
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\AdPort.pas
-
-[View6]
-CustomEditViewType=TEditView
 Module=D:\Home\Delphi\sem2reader\main.pas
-CursorX=43
-CursorY=829
-TopLine=815
+CursorX=68
+CursorY=509
+TopLine=495
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
-[View7]
-CustomEditViewType=TEditView
-Module=D:\Home\Delphi\sem2reader\get_stat1.pas
-CursorX=37
-CursorY=3
-TopLine=58
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Home\Delphi\sem2reader\get_stat1.pas
-
-[View8]
-CustomEditViewType=TEditView
-Module=D:\Home\Delphi\sem2reader\get_memory3.pas
-CursorX=36
-CursorY=31
-TopLine=9
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Home\Delphi\sem2reader\get_memory3.pas
-
-[View9]
-CustomEditViewType=TEditView
-Module=C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\OoMisc.pas
-CursorX=1
-CursorY=4146
-TopLine=4134
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Program Files (x86)\Embarcadero\RAD Studio\AsyncPro.4_07_RC3\source\OoMisc.pas
-
-[View10]
-CustomEditViewType=TEditView
-Module=D:\Home\Delphi\sem2reader\get_digit.pas
-CursorX=46
-CursorY=29
-TopLine=10
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Home\Delphi\sem2reader\get_digit.pas
-
-[View11]
+[View1]
 CustomEditViewType=TEditView
 Module=D:\Home\Delphi\sem2reader\box.pas
-CursorX=63
-CursorY=452
-TopLine=447
+CursorX=27
+CursorY=8
+TopLine=161
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=D:\Home\Delphi\sem2reader\box.pas
 
-[View12]
+[View2]
 CustomEditViewType=TEditView
-Module=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdTCPClient.pas
-CursorX=1
-CursorY=228
-TopLine=313
+Module=D:\Home\Delphi\sem2reader\get_version2.pas
+CursorX=79
+CursorY=10
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\source\Indy10\Core\IdTCPClient.pas
+EditViewName=D:\Home\Delphi\sem2reader\get_version2.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=D:\Home\Delphi\sem2reader\get_records.pas
+CursorX=11
+CursorY=5
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Home\Delphi\sem2reader\get_records.pas
+
+[View4]
+CustomEditViewType=TEditView
+Module=D:\Home\Delphi\sem2reader\get_memory0.pas
+CursorX=1
+CursorY=1
+TopLine=61
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Home\Delphi\sem2reader\get_memory0.pas
+
+[View5]
+CustomEditViewType=TEditView
+Module=D:\Home\Delphi\sem2reader\get_memory1.pas
+CursorX=54
+CursorY=10
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Home\Delphi\sem2reader\get_memory1.pas
+
+[View6]
+CustomEditViewType=TEditView
+Module=D:\Home\Delphi\sem2reader\get_memory12.pas
+CursorX=1
+CursorY=1
+TopLine=19
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Home\Delphi\sem2reader\get_memory12.pas
 
 [Watches]
 Count=3
@@ -280,7 +183,7 @@ Watch1='ch',256,0,18,1,0,'Watches',1
 Watch2='Ord(chT)',256,0,18,1,0,'Watches',1
 
 [WatchWindow]
-WatchColumnWidth=123
+WatchColumnWidth=120
 WatchShowColumnHeaders=1
 PercentageSizes=1
 Create=1
@@ -290,11 +193,11 @@ State=0
 Left=0
 Top=0
 Width=3826
-Height=979
+Height=1060
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=979
+ClientHeight=1060
 TBDockHeight=219
 LRDockWidth=13597
 Dockable=1
@@ -354,18 +257,18 @@ StayOnTop=0
 [MessageView]
 PercentageSizes=1
 Create=1
-Visible=1
+Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
-Width=10000
-Height=1336
+Top=0
+Width=2771
+Height=1417
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=10000
-ClientHeight=1336
-TBDockHeight=1336
+ClientWidth=2771
+ClientHeight=1417
+TBDockHeight=1417
 LRDockWidth=2771
 Dockable=1
 StayOnTop=0
@@ -396,7 +299,7 @@ Visible=0
 Docked=1
 State=0
 Left=-1440
-Top=227
+Top=-85
 Width=278
 Height=357
 MaxLeft=-1
@@ -420,11 +323,11 @@ State=0
 Left=0
 Top=0
 Width=3826
-Height=979
+Height=1060
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=979
+ClientHeight=1060
 TBDockHeight=415
 LRDockWidth=4951
 Dockable=1
@@ -439,11 +342,11 @@ State=0
 Left=0
 Top=0
 Width=3826
-Height=979
+Height=1060
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=979
+ClientHeight=1060
 TBDockHeight=219
 LRDockWidth=7403
 Dockable=1
@@ -462,11 +365,11 @@ State=0
 Left=0
 Top=0
 Width=3826
-Height=979
+Height=1060
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=979
+ClientHeight=1060
 TBDockHeight=1532
 LRDockWidth=3479
 Dockable=1
@@ -481,11 +384,11 @@ State=0
 Left=0
 Top=0
 Width=3826
-Height=979
+Height=1060
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=979
+ClientHeight=1060
 TBDockHeight=2062
 LRDockWidth=3479
 Dockable=1
@@ -513,18 +416,18 @@ StayOnTop=0
 [PropertyInspector]
 PercentageSizes=1
 Create=1
-Visible=1
+Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
+Top=0
 Width=1896
-Height=7166
+Height=9136
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1896
-ClientHeight=7166
-TBDockHeight=7166
+ClientHeight=9136
+TBDockHeight=9136
 LRDockWidth=1896
 Dockable=1
 StayOnTop=0
@@ -532,8 +435,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=MenuAnimation=0
+SelectedItem=,
+ExpandedItems=
 
 [TFileExplorerForm]
 PercentageSizes=1
@@ -541,8 +444,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-1352
-Top=-31
+Left=-1440
+Top=-85
 Width=2847
 Height=6210
 MaxLeft=-1
@@ -563,11 +466,11 @@ State=0
 Left=0
 Top=0
 Width=2340
-Height=887
+Height=1118
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2340
-ClientHeight=887
+ClientHeight=1118
 TBDockHeight=2316
 LRDockWidth=2826
 Dockable=1
@@ -628,11 +531,11 @@ State=0
 Left=0
 Top=0
 Width=3826
-Height=979
+Height=1060
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=979
+ClientHeight=1060
 TBDockHeight=1544
 LRDockWidth=8743
 Dockable=1
@@ -719,14 +622,14 @@ Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
+Top=0
 Width=3826
-Height=1336
+Height=1417
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3826
-ClientHeight=1336
-TBDockHeight=1336
+ClientHeight=1417
+TBDockHeight=1417
 LRDockWidth=3826
 Dockable=1
 StayOnTop=0
@@ -743,7 +646,7 @@ Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
+Top=0
 Width=2000
 Height=8802
 MaxLeft=-1
