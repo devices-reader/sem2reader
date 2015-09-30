@@ -8,7 +8,7 @@ uses
   basic, ComCtrls, ToolWin, StdCtrls, IniFiles, ExtCtrls, Math,
   Buttons, Mask, Grids, Menus, FileCtrl, OoMisc, AdPort, ImgList, CheckLst,
   AdTapi, AdTStat, IdBaseComponent, IdComponent, IdTCPConnection,
-  IdTCPClient;
+  IdTCPClient, IdGlobal;
 
 type
   TfrmMain = class(TfrmBasic)
@@ -243,12 +243,17 @@ type
     procedure pgcModeChange(Sender: TObject);
     procedure btbSocketOpenClick(Sender: TObject);
     procedure btbSocketCloseClick(Sender: TObject);
+    procedure IdTCPClientAfterBind(Sender: TObject);
+    procedure IdTCPClientBeforeBind(Sender: TObject);
+    procedure IdTCPClientSocketAllocated(Sender: TObject);
     procedure IdTCPClientConnected(Sender: TObject);
     procedure IdTCPClientDisconnected(Sender: TObject);
     procedure IdTCPClientStatus(ASender: TObject; const AStatus: TIdStatus; const AStatusText: String);
-    procedure IdTCPClientWork(Sender: TObject; AWorkMode: TWorkMode; const AWorkCount: Integer);
-    procedure IdTCPClientWorkBegin(Sender: TObject; AWorkMode: TWorkMode; const AWorkCountMax: Integer);
+    procedure IdTCPClientWork(ASender: TObject; AWorkMode: TWorkMode; AWorkCount: Int64);
+    procedure IdTCPClientWorkBegin(ASender: TObject; AWorkMode: TWorkMode; AWorkCountMax: Int64);
     procedure IdTCPClientWorkEnd(Sender: TObject; AWorkMode: TWorkMode);
+    procedure stbMainDrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
+      const Rect: TRect);
   private
     { Private declarations }
   public
@@ -304,14 +309,16 @@ procedure TSocketInputThread.Execute;
 begin
   with frmMain do begin
     while not Terminated do begin
-      if not IdTCPClient.Connected then
-        Terminate
-      else
-      try
-        sBuff := IdTCPClient.CurrentReadBuffer;
-        Synchronize(HandleInput);
-      except
-      end;
+        if not frmMain.IdTCPClient.Connected then
+          Terminate
+        else
+          try
+            if not IdTCPClient.IOHandler.InputBufferIsEmpty then begin
+              sBuff := IdTCPClient.IOHandler.InputBufferAsString(Indy8BitEncoding);
+              Synchronize(HandleInput);
+            end;
+          except
+        end;
     end;
   end;
 end;
@@ -437,6 +444,7 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 var
   i:  word;
+  ProgressBarStyle: integer;
 begin
   inherited;
   lblDays2Size.Caption := '0..'+IntToStr(DAYS2-1);
@@ -496,7 +504,7 @@ begin
       updShiftMax.Position := ReadInteger(PARAMS, SHIFT_MAX, 0);
 
       updRecordMin.Position := ReadInteger(PARAMS, RECORD_MIN, 0);
-      updRecordMax.Position := ReadInteger(PARAMS, RECORD_MAX, wRECORD2_PAGES-1);
+//      updRecordMax.Position := ReadInteger(PARAMS, RECORD_MAX, RECORD2_PAGES-1); ???
 
       updDigits.Position   := FIni.ReadInteger(PARAMS, DIGITS, 4);
       updColWidth.Position := FIni.ReadInteger(PARAMS, COLWIDTH, 12);
@@ -534,11 +542,19 @@ begin
   end;
 
   cmbParity.ItemIndex := GetParity;
+
+  stbMain.Panels[5].Style := psOwnerDraw;
+  prbMain.Parent := stbMain;
+
+  ProgressBarStyle := GetWindowLong(prbMain.Handle, GWL_EXSTYLE);
+  ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
+  SetWindowLong(prbMain.Handle, GWL_EXSTYLE, ProgressBarStyle);
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
   inherited;
+  WindowState := wsMaximized;
   pgcMain.ActivePage := tbsFirst;
   pgcTop2.ActivePage := tbsEnergy;
   Application.Title := Caption;
@@ -596,7 +612,7 @@ begin
 
       for i := 0 to clbMain.Count-1 do 
         WriteBool(OPTIONS, INQUIRY+IntTOStr(i), clbMain.Checked[i]);
-        
+
       for i := 0 to clbCanals.Count-1 do 
         WriteBool(stCANALS, stCANAL_ITEM+IntTOStr(i), clbCanals.Checked[i]);        
       for i := 0 to clbGroups.Count-1 do 
@@ -794,6 +810,19 @@ begin
   cmbComNumber.Enabled          := not Flag;
   cmbBaud.Enabled               := not Flag;
   cmbParity.Enabled             := not Flag;
+end;
+
+procedure TfrmMain.stbMainDrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
+  const Rect: TRect);
+begin
+  inherited;
+  if Panel = StatusBar.Panels[5] then
+  with prbMain do begin
+    Top := Rect.Top;
+    Left := Rect.Left;
+    Width := Rect.Right - Rect.Left;
+    Height := Rect.Bottom - Rect.Top;
+  end;
 end;
 
 procedure TfrmMain.TAPIoff;
@@ -1204,6 +1233,24 @@ begin
   end;
 end;
 
+procedure TfrmMain.IdTCPClientBeforeBind(Sender: TObject);
+begin
+  inherited;
+  AddTerminalTime('IdTCPClient - BeforeBind',clGray);
+end;
+
+procedure TfrmMain.IdTCPClientAfterBind(Sender: TObject);
+begin
+  inherited;
+  AddTerminalTime('IdTCPClient - AfterBind',clGray);
+end;
+
+procedure TfrmMain.IdTCPClientSocketAllocated(Sender: TObject);
+begin
+  inherited;
+  AddTerminalTime('IdTCPClient - SocketAllocated',clGray);
+end;
+
 procedure TfrmMain.IdTCPClientConnected(Sender: TObject);
 var
   s: string;
@@ -1238,21 +1285,7 @@ begin
   AddDial(s);
 end;
 
-procedure TfrmMain.IdTCPClientWorkBegin(Sender: TObject; AWorkMode: TWorkMode; const AWorkCountMax: Integer);
-var
-  s: string;
-begin
-  inherited;
-  if AWorkMode = wmRead then
-    s := 'чтение начато: максимум ' + IntToStr(AWorkCountMax) + ' байт'
-  else
-    s := 'запись начата: максимум ' + IntToStr(AWorkCountMax) + ' байт';
-
-  AddTerminalTime(s,clGray);
-  AddDial(s);
-end;
-
-procedure TfrmMain.IdTCPClientWork(Sender: TObject; AWorkMode: TWorkMode; const AWorkCount: Integer);
+procedure TfrmMain.IdTCPClientWork(ASender: TObject; AWorkMode: TWorkMode; AWorkCount: Int64);
 var
   s: string;
 begin
@@ -1261,6 +1294,20 @@ begin
     s := 'чтение: ' + IntToStr(AWorkCount) + ' байт'
   else
     s := 'запись: ' + IntToStr(AWorkCount) + ' байт';
+
+  AddTerminalTime(s,clGray);
+  AddDial(s);
+end;
+
+procedure TfrmMain.IdTCPClientWorkBegin(ASender: TObject; AWorkMode: TWorkMode; AWorkCountMax: Int64);
+var
+  s: string;
+begin
+  inherited;
+  if AWorkMode = wmRead then
+    s := 'чтение начато: максимум ' + IntToStr(AWorkCountMax) + ' байт'
+  else
+    s := 'запись начата: максимум ' + IntToStr(AWorkCountMax) + ' байт';
 
   AddTerminalTime(s,clGray);
   AddDial(s);

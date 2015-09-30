@@ -10,7 +10,7 @@ implementation
 uses SysUtils, soutput, support, progress, box, kernel, terminal;
 
 const
-  quGetMemory12: querys = (Action: acGetMemory12; cwOut: 7+2; cwIn: bHEADER+wPAGE_SIZE+2; bNumber: 249);
+  quGetMemory12: querys = (Action: acGetMemory12; cwOut: 7+2; cwIn: 0; bNumber: 249);
 
 procedure QueryGetMemory12;
 begin

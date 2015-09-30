@@ -22,13 +22,13 @@ const
   DEVICES_LINES = 1+28;
 
   bHEADER         = 15;
-  
+{
   wPAGE_SIZE      = 1056; // размер одной страницы
   wFREEPAGE_SIZE  = 1040; // размер доступной информации внутри одной страницы
 
   wPAGE_SIZE2     = 528;  // размер одной страницы
   wFREEPAGE_SIZE2 = 512;  // размер доступной информации внутри одной страницы
-
+}
 type
   node = record
     ibCanal:    byte;

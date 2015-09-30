@@ -10,7 +10,7 @@ implementation
 uses SysUtils, Classes, soutput, support, progress, box, kernel, terminal, crc;
 
 const
-  quGetMemory1: querys = (Action: acGetMemory1; cwOut: 7+2; cwIn: bHEADER+wPAGE_SIZE+2; bNumber: 249);
+  quGetMemory1: querys = (Action: acGetMemory1; cwOut: 7+2; cwIn: 0; bNumber: 249);
 
 var
   pwModems,

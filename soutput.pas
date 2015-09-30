@@ -3,7 +3,7 @@ unit soutput;
 
 interface
 
-uses SysUtils, Classes, Graphics, StdCtrls, Windows, box;
+uses SysUtils, Classes, Graphics, StdCtrls, Windows, IdGlobal, box;
 
 var
   queQueryCRC:  querys;
@@ -36,7 +36,7 @@ implementation
 uses main, support, terminal, crc, kernel, borders, sinput, get_memory3;
 
 const
-  stHEADER:         string = 'Калюмны ';
+  stHEADER:         AnsiString = 'Калюмны ';
   bPACKET_HEADER:   byte = 8;
 
 procedure Stop;
@@ -156,15 +156,16 @@ begin
   Result := IntToHex(i,2) + '  ' + Result;
 end;
 
-procedure OutCharPause(chT: char; Pause: boolean);
+procedure OutCharPause(chT: AnsiChar; Pause: boolean);
 begin
   with frmMain do begin
 
     if (pgcMode.ActivePage = tbsPort) or (pgcMode.ActivePage = tbsModem) then begin
-      ComPort.PutChar(chT);
+      ComPort.PutChar(AnsiChar(chT));
     end
     else begin
-      IdTCPClient.Write(chT);
+//      IdTCPClient.Write(chT);  ???
+      IdTCPClient.IOHandler.Write(chT);
     end;
 
     InsByte(Ord(chT),clRed);
@@ -255,6 +256,13 @@ begin
       if quT.Action = acGetCBYTE      then quT.cwIn := 5+wMemSize+2;
       if quT.Action = acGetFCVAR      then quT.cwIn := 5+wMemSize+2;
 
+      if quT.Action = acGetMemory1    then quT.cwIn := bHEADER+1056+2;
+      if quT.Action = acGetMemory12   then quT.cwIn := bHEADER+1056+2;
+      if quT.Action = acGetMemory2    then quT.cwIn := bHEADER+wPageSize+2;
+      if quT.Action = acGetMemory21   then quT.cwIn := bHEADER+wPageSize+2;
+      if quT.Action = acGetMemory22   then quT.cwIn := bHEADER+wPageSize+2;
+      if quT.Action = acGetMemory23   then quT.cwIn := bHEADER+wPageSize+2;
+
       queQueryCRC := quT;
 
       InitPushZero;
@@ -312,7 +320,8 @@ begin
         ComPort.PutBlock(mpbOut, cwOut);
       end
       else begin
-        IdTCPClient.WriteBuffer(mpbOut, cwOut);
+//        IdTCPClient.WriteBuffer(mpbOut, cwOut);
+        IdTCPClient.IOHandler.Write(IdGlobal.RawToBytes(mpbOut, cwOut));
       end;
 
       ShowOutData(cwOut);
@@ -341,7 +350,8 @@ begin
         ComPort.PutBlock(mpbOut, cwSize);
       end
       else begin
-        IdTCPClient.WriteBuffer(mpbOut, cwSize);
+//        IdTCPClient.WriteBuffer(mpbOut, cwSize);
+        IdTCPClient.IOHandler.Write(IdGlobal.RawToBytes(mpbOut, cwSize));
       end;
 
       ShowOutData(cwSize);

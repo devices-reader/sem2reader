@@ -4,6 +4,9 @@ interface
 
 uses SysUtils, AdTapi, timez;
 
+var
+  wPageSize, wFreePageSize: word;
+
 type
   actions =
   (
@@ -442,7 +445,7 @@ begin
     for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];    
   end;
 
-  InitGetRecords;
+  // InitGetRecords(wFreePageSize); ???
 end;
 
 procedure BoxRun;
@@ -755,6 +758,17 @@ begin
 
     if Checked[Ord(acGetStat1)] then begin
       Checked[Ord(acGetMemory0)]  := True;
+    end;
+
+   if Checked[Ord(acGetMemory0)] or
+      Checked[Ord(acGetMemory2)] or
+      Checked[Ord(acGetMemory21)] or
+      Checked[Ord(acGetMemory22)] or
+      Checked[Ord(acGetMemory23)] or
+      Checked[Ord(acGetRecords0)] or
+      Checked[Ord(acGetRecordsX0)]
+    then begin
+      Checked[Ord(acGetVersion2)] := True;
     end;
 
     if Checked[Ord(acGetCALC1)] then begin

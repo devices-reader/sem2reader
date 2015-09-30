@@ -10,7 +10,7 @@ implementation
 uses SysUtils, Classes, soutput, support, progress, box, kernel, timez, calendar, main, t_memory, get_memory0;
 
 const
-  quGetMemory23: querys = (Action: acGetMemory23; cwOut: 7+2; cwIn: bHEADER+wPAGE_SIZE+2; bNumber: 249);
+  quGetMemory23: querys = (Action: acGetMemory23; cwOut: 7+2; cwIn: 0; bNumber: 249);
 
 var
   wPage0,wPage1,wPage2: word;
@@ -63,7 +63,7 @@ begin
   s := PackStrR(IntToStr(wPage1),8);
   s := s + PackStrR('мес€ц -' + IntToStr(i),15);
   s := s + PackStrR(Times2StrMon(MonIndexToDate(DateToMonIndex(tiCurr)-i)),25);
-  l := TestPages(s);
+  l := TestPages(s,wPageSize,wFreePageSize);
 
   InitPop(15);
   l.Add('');

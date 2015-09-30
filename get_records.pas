@@ -2,7 +2,7 @@ unit get_records;
 
 interface
 
-procedure InitGetRecords;
+procedure InitGetRecords(wFreePageSize: word);
 
 procedure BoxGetRecords0;
 procedure BoxGetRecords1;
@@ -15,15 +15,19 @@ procedure ShowGetRecords;
 procedure BoxGetRecordsX0;
 procedure ShowGetRecordsX;
 
+function GetRecordBlock(wFreePageSize: word): byte;
+function GetRecord1Pages(wFreePageSize: word): word;
+function GetRecord2Pages(wFreePageSize: word): word;
+
 const
-  wFREEPAGE_SIZE  = 1040;
+//  wFREEPAGE_SIZE  = 1040;
   wRECORDS        = 500;
   wRECORDS2       = 20000;
   bRECORD_BUFF    = 8;
   bRECORD_SIZE    = 6+4+1+bRECORD_BUFF;
-  bRECORD_BLOCK   = wFREEPAGE_SIZE div bRECORD_SIZE;
-  bRECORD_PAGES   = (wRECORDS div bRECORD_BLOCK)+1;
-  wRECORD2_PAGES  = (wRECORDS2 div bRECORD_BLOCK)+1;
+//  bRECORD_BLOCK   = wFREEPAGE_SIZE div bRECORD_SIZE;
+//  bRECORD_PAGES   = (wRECORDS div bRECORD_BLOCK)+1;
+//  wRECORD2_PAGES  = (wRECORDS2 div bRECORD_BLOCK)+1;
 
 implementation
 
@@ -43,9 +47,24 @@ var
   bRecCode:     byte;
   mpbRec:       array[0..bRECORD_BUFF-1] of byte;
 
-procedure InitGetRecords;
+function GetRecordBlock(wFreePageSize: word): byte;
 begin
-  frmMain.lblRecordRange.Caption := '0..'+IntToStr(wRECORD2_PAGES-1);
+  Result := wFreePageSize div bRECORD_SIZE;
+end;
+
+function GetRecord1Pages(wFreePageSize: word): word;
+begin
+  Result := (wRECORDS div GetRecordBlock(wFreePageSize))+1;
+end;
+
+function GetRecord2Pages(wFreePageSize: word): word;
+begin
+  Result := (wRECORDS2 div GetRecordBlock(wFreePageSize))+1;
+end;
+
+procedure InitGetRecords(wFreePageSize: word);
+begin
+  frmMain.lblRecordRange.Caption := '0..'+IntToStr(GetRecord2Pages(wFreePageSize)-1);
 end;
 
 procedure QueryGetRecords;
@@ -72,7 +91,7 @@ begin
   with frmMain.prbMain do begin
     Min := 0;
     Position := 0;
-    Max := bRECORD_PAGES-1;
+    Max := GetRecord1Pages(wFreePageSize)-1;
   end;
 
   cwRec := 0;
@@ -579,7 +598,7 @@ begin
     PopLong;
     PopInt;
 
-    for i := 0 to bRECORD_BLOCK-1 do begin
+    for i := 0 to GetRecordBlock(wFreePageSize)-1 do begin
      stT := GetRecord;
      if bRecCode = $FF then begin
 //       AddInfo('-')
@@ -593,7 +612,7 @@ begin
 //    AddInfo('=');
     with prbMain do Position := bPage+1;
 
-    if bPage < bRECORD_PAGES-1 then begin
+    if bPage < GetRecord1Pages(wFreePageSize)-1 then begin
       Inc(bPage);
       QueryGetRecords;
     end
@@ -612,7 +631,7 @@ begin
     PopLong;
     PopInt;
 
-    for i := 0 to bRECORD_BLOCK-1 do begin
+    for i := 0 to GetRecordBlock(wFreePageSize)-1 do begin
      stT := GetRecord;
      if bRecCode = $FF then begin
 //       AddInfo('-')

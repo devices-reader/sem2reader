@@ -10,7 +10,7 @@ implementation
 uses SysUtils, soutput, support, progress, box, kernel, main, t_memory;
 
 const
-  quGetMemory2: querys = (Action: acGetMemory2; cwOut: 7+2; cwIn: bHEADER+wPAGE_SIZE+2; bNumber: 249);
+  quGetMemory2: querys = (Action: acGetMemory2; cwOut: 7+2; cwIn: 0; bNumber: 249);
 
 var
   wPage0,wPage1,wPage2: word;
@@ -47,7 +47,7 @@ begin
   Stop;
   InitPop(15);
 
-  AddInfoAll(TestPages(''));
+  AddInfoAll(TestPages('',wPageSize,wFreePageSize));
 
   ShowProgress(Abs(wPage0 - wPage1), Abs(wPage0 - wPage2) + 1);
 
