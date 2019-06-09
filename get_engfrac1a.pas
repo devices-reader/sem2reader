@@ -1,30 +1,30 @@
-unit get_engfrac1;
+unit get_engfrac1a;
 
 interface
 
-procedure BoxGetEngFrac1;
-procedure ShowGetEngFrac1;
+procedure BoxGetEngFrac1a;
+procedure ShowGetEngFrac1a;
 
 implementation
 
 uses SysUtils, soutput, support, box, realz;
 
 const
-  quGetEngFrac1:   querys = (Action: acGetEngFrac1; cwOut: 7+1; cwIn: 5+64*6*4+2; bNumber: $FF);
+  quGetEngFrac1a:   querys = (Action: acGetEngFrac1a; cwOut: 7+1; cwIn: 5+64*6*4+2; bNumber: $FF);
 
-procedure QueryGetEngFrac1;
+procedure QueryGetEngFrac1a;
 begin
   InitPushCRC;
   Push(110);
-  Query(quGetEngFrac1);
+  Query(quGetEngFrac1a);
 end;
 
-procedure BoxGetEngFrac1;
+procedure BoxGetEngFrac1a;
 begin
-  QueryGetEngFrac1;
+  QueryGetEngFrac1a;
 end;
 
-procedure ShowGetEngFrac1;
+procedure ShowGetEngFrac1a;
 var
   Dig,Can: byte;
   s: string;

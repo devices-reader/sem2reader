@@ -38,6 +38,7 @@ end;
 
 procedure BoxGetExt7X2;
 begin
+  TestVersion4;
   if TestCanals and TestDays then begin
     AddInfo('');
     AddInfo('Значения счетчиков на начало суток');

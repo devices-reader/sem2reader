@@ -39,6 +39,7 @@ begin
     AddInfo('ревизия:              ' + IntToStr(i));
   if i = 0 then begin
     j := Pop;
+    SetVersion(j);
 
     if j = 4 then begin
       wPageSize := 528;

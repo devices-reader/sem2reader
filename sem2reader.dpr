@@ -1,6 +1,6 @@
 program sem2reader;
 
-{%ToDo 'sem2reader.todo'}
+
 
 uses
   Forms,
@@ -141,13 +141,25 @@ uses
   get_extended5_x2 in 'get_extended5_x2.pas',
   get_extended4_x2 in 'get_extended4_x2.pas',
   get_extended44_x2 in 'get_extended44_x2.pas',
-  get_engfrac1 in 'get_engfrac1.pas',
+  get_engfrac1a in 'get_engfrac1a.pas',
   get_engfrac2 in 'get_engfrac2.pas',
   get_memory3 in 'get_memory3.pas',
   get_extended6_x2 in 'get_extended6_x2.pas',
   get_extended7_x2 in 'get_extended7_x2.pas',
   get_errorlink in 'get_errorlink.pas',
-  get_extended0 in 'get_extended0.pas';
+  get_extended0 in 'get_extended0.pas',
+  get_calc3 in 'get_calc3.pas',
+  get_engfrac1b in 'get_engfrac1b.pas',
+  get_review in 'get_review.pas',
+  get_echo_n_to_1 in 'get_echo_n_to_1.pas',
+  get_echo_n_to_n in 'get_echo_n_to_n.pas',
+  get_echo_1_to_n in 'get_echo_1_to_n.pas',
+  histogram in 'histogram.pas',
+  histograms in 'histograms.pas',
+  t_entry in 't_entry.pas',
+  calendar2 in 'calendar2.pas',
+  t_realtime in 't_realtime.pas',
+  get_realtime2 in 'get_realtime2.pas';
 
 {$R *.RES}
 

@@ -40,6 +40,7 @@ end;
 
 procedure BoxGetExt6X2;
 begin
+  TestVersion4;
   if TestCanals and TestMonths then begin
     AddInfo('');
     AddInfo('«начени€ счетчиков на конец мес€ца (из буфера пр€мого опроса)(двойна€ точность)');

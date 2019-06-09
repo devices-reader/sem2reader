@@ -78,9 +78,6 @@ begin
 
     HistogramsAddInBytes(wSize);
     HistogramsAddTimeout(dwTerminalTimeout);
-
-    if chbChart.Enabled then
-      crtMain.Series[0].AddXY(wSize, dwTerminalTimeout);
   end;
 end;
 

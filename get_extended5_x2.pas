@@ -34,6 +34,8 @@ end;
 
 procedure BoxGetExt50X2;
 begin
+  TestVersion4;
+
   AddInfo('');
   AddInfo('Значения счетчиков текущие по тарифам 1 (двойная точность)');
   QueryGetExt50X2;
@@ -41,6 +43,8 @@ end;
 
 procedure BoxGetExt51X2;
 begin
+  TestVersion4;
+
   AddInfo('');
   AddInfo('Значения счетчиков текущие по тарифам 2 (двойная точность)');
   QueryGetExt51X2;

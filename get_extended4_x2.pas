@@ -69,6 +69,7 @@ end;
 
 procedure BoxGetExt40X2;
 begin
+  TestVersion4;
   if TestCanals and TestMonths then begin
     AddInfo('');
     AddInfo('«начени€ счЄтчиков на конец мес€ца (из буфера с дозапросом) (по маске каналов) (вариант 1) (двойна€ точность)');
@@ -80,6 +81,7 @@ end;
 
 procedure BoxGetExt41X2;
 begin
+  TestVersion4;
   if TestCanals and TestMonths then begin
     AddInfo('');
     AddInfo('«начени€ счЄтчиков на конец мес€ца (из буфера с дозапросом) (по индексу канала) (двойна€ точность)');
@@ -92,6 +94,7 @@ end;
 
 procedure BoxGetExt42X2;
 begin
+  TestVersion4;
   if TestCanals and TestMonths then begin
     AddInfo('');
     AddInfo('«начени€ счЄтчиков на конец мес€ца (мгновенные) (двойна€ точность)');

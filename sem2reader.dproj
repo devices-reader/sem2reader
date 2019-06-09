@@ -3,7 +3,7 @@
 			<ProjectGuid>{A2AE44F0-DF95-4450-AA8D-EF7BA04CDC4E}</ProjectGuid>
 			<MainSource>sem2reader.dpr</MainSource>
 			<Base>True</Base>
-			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Config Condition="'$(Config)'==''">Release</Config>
 			<TargetedPlatforms>1</TargetedPlatforms>
 			<AppType>Application</AppType>
 			<FrameworkType>VCL</FrameworkType>
@@ -62,7 +62,7 @@
 		<PropertyGroup Condition="'$(Base_Win32)'!=''">
 			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
 			<Icon_MainIcon>sem2reader_Icon.ico</Icon_MainIcon>
-			<DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<DCC_Namespace>System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
 			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -225,13 +225,25 @@
 			<DCCReference Include="get_extended5_x2.pas"/>
 			<DCCReference Include="get_extended4_x2.pas"/>
 			<DCCReference Include="get_extended44_x2.pas"/>
-			<DCCReference Include="get_engfrac1.pas"/>
+			<DCCReference Include="get_engfrac1a.pas"/>
 			<DCCReference Include="get_engfrac2.pas"/>
 			<DCCReference Include="get_memory3.pas"/>
 			<DCCReference Include="get_extended6_x2.pas"/>
 			<DCCReference Include="get_extended7_x2.pas"/>
 			<DCCReference Include="get_errorlink.pas"/>
 			<DCCReference Include="get_extended0.pas"/>
+			<DCCReference Include="get_calc3.pas"/>
+			<DCCReference Include="get_engfrac1b.pas"/>
+			<DCCReference Include="get_review.pas"/>
+			<DCCReference Include="get_echo_n_to_1.pas"/>
+			<DCCReference Include="get_echo_n_to_n.pas"/>
+			<DCCReference Include="get_echo_1_to_n.pas"/>
+			<DCCReference Include="histogram.pas"/>
+			<DCCReference Include="histograms.pas"/>
+			<DCCReference Include="t_entry.pas"/>
+			<DCCReference Include="calendar2.pas"/>
+			<DCCReference Include="t_realtime.pas"/>
+			<DCCReference Include="get_realtime2.pas"/>
 			<None Include="sem2reader.todo"/>
 			<BuildConfiguration Include="Debug">
 				<Key>Cfg_2</Key>
@@ -262,7 +274,7 @@
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">219</VersionInfo>
+						<VersionInfo Name="Build">223</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -274,7 +286,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">1.0.0.219</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.223</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>

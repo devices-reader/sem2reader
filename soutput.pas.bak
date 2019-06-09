@@ -33,7 +33,7 @@ procedure NormalMode;
 
 implementation
 
-uses main, support, terminal, crc, kernel, borders, sinput, get_memory3, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n;
+uses main, support, terminal, crc, kernel, borders, sinput, get_memory3, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n;;
 
 const
   stHEADER:         AnsiString = 'Калюмны ';
@@ -270,6 +270,7 @@ begin
       if quT.Action = acGetRecords4   then quT.cwIn := 5+6+wFreePageSize+2;
       if quT.Action = acGetRecords5   then quT.cwIn := 5+6+wFreePageSize+2;
       if quT.Action = acGetRecordsX0  then quT.cwIn := 5+6+wFreePageSize+2;
+
 
       if quT.Action = acGetEchoNtoN then begin quT.cwOut := 5+1+wEchoNtoN+2; quT.cwIn := 5+1+wEchoNtoN+2; end;
       if quT.Action = acGetEchoNto1 then quT.cwOut := 5+1+wEchoNto1+2;

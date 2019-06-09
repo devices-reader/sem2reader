@@ -149,7 +149,6 @@ type
     acGetCheckupDays,
 
     acGetMemory0,
-    acGetRealtime2,
     acGetMemory2,
     acGetMemory21,
     acGetMemory22,
@@ -228,8 +227,7 @@ procedure BoxRead;
 procedure BoxShow(Action: actions);
 
 procedure TestVersion4;
-procedure SetVersion(v: shortint);
-function GetVersion: shortint;
+procedure SetVersion(b: shortint);
 
 var
   cwConnect:  longword;
@@ -257,14 +255,12 @@ get_extended44_x2, get_extended4_x2,
 get_queryCF, get_queryFF19,
 get_decret, get_start, get_bulk, get_engfrac1a, get_engfrac1b, get_engfrac2, get_errorlink,
 get_checkup, get_checkup_events_day, get_checkup_events_mon, get_checkup_hou, get_checkup_defects_day, get_checkup_defects_mon, get_checkup_days,
-get_realtime2,
 get_memory0, get_memory1, get_memory12, get_memory2, get_memory21, get_memory22, get_memory23, get_memory3,
 get_defcanhou, get_defgrphou, get_defcanday, get_defcanmon, get_defgrpday, get_defgrpmon, get_defcanday2, get_defcanmon2, get_defgrpday2, get_defgrpmon2,
 get_enggrpprevhou_def, get_powgrpprevhou_def, get_enggrpday_def, get_enggrpmon_def, get_maxgrpday_def, get_maxgrpmon_def,
 get_enggrpday_x2, get_enggrpmon_x2,
 get_review,
-get_current, get_current4, get_contacts3, get_calc1, get_calc2, get_calc3, get_stat1,
-histograms, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n;
+get_current, get_current4, get_contacts3, get_calc1, get_calc2, get_calc3, get_stat1, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n;
 
 var
   BoxStart:     TDateTime;
@@ -449,8 +445,7 @@ begin
     Items[Ord(acGetCheckupDefectsMon)]:= InfoGetCheckupDefectsMon;
     Items[Ord(acGetCheckupDays)]:= InfoGetCheckupDays;
 
-    Items[Ord(acGetMemory0)]      := ('*чтение состо€ни€ пам€ти (верси€ 1)');
-    Items[Ord(acGetRealtime2)]    := ('*чтение состо€ни€ пам€ти (верси€ 2)');
+    Items[Ord(acGetMemory0)]      := ('*чтение состо€ни€ пам€ти');
     Items[Ord(acGetMemory2)]      := ('чтение пам€ти по заданным адресам');
     Items[Ord(acGetMemory21)]     := ('чтение пам€ти (энерги€ по каналам за сутки по получасам)');
     Items[Ord(acGetMemory22)]     := ('чтение пам€ти (энерги€ по каналам за сутки)');
@@ -463,9 +458,9 @@ begin
     Items[Ord(acGetCBYTE)]       := ('*чтение пам€ти 3');
     Items[Ord(acGetFCVAR)]       := ('*чтение пам€ти 4');
 
-    Items[Ord(acGetEchoNtoN)]   := ('*проверка канала св€зи N к N');
-    Items[Ord(acGetEchoNto1)]   := ('*проверка канала св€зи N к 1');
-    Items[Ord(acGetEcho1toN)]   := ('*проверка канала св€зи 1 к N');
+    Items[Ord(acGetEchoNtoN)]   := ('*эхо N to N');
+    Items[Ord(acGetEchoNto1)]   := ('*эхо N to 1');
+    Items[Ord(acGetEcho1toN)]   := ('*эхо 1 to N');
 
     for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];    
   end;
@@ -633,7 +628,6 @@ begin
         Ord(acGetCheckupDays): begin BoxGetCheckupDays; Inc(iwBox); exit; end;
 
         Ord(acGetMemory0):    begin BoxGetMemory0;          Inc(iwBox); exit; end;
-        Ord(acGetRealtime2):  begin BoxGetRealtime2;        Inc(iwBox); exit; end;
         Ord(acGetMemory2):    begin BoxGetMemory2;          Inc(iwBox); exit; end;
         Ord(acGetMemory21):   begin BoxGetMemory21;         Inc(iwBox); exit; end;
         Ord(acGetMemory22):   begin BoxGetMemory22;         Inc(iwBox); exit; end;
@@ -802,11 +796,6 @@ begin
       Checked[Ord(acGetMemory22)] or
       Checked[Ord(acGetMemory23)] or
       Checked[Ord(acGetRecords0)] or
-      Checked[Ord(acGetRecords1)] or
-      Checked[Ord(acGetRecords2)] or
-      Checked[Ord(acGetRecords3)] or
-      Checked[Ord(acGetRecords4)] or
-      Checked[Ord(acGetRecords5)] or
       Checked[Ord(acGetRecordsX0)]
     then begin
       Checked[Ord(acGetVersion2)] := True;
@@ -845,17 +834,6 @@ begin
       Checked[Ord(acGetImpCanMon)] := True;
       Checked[Ord(acGetExt42)] := True;
       Checked[Ord(acGetDigit)] := True;
-    end;
-
-   if Checked[Ord(acGetMemory0)] then begin
-      Checked[Ord(acGetTime1)] := True;
-      Checked[Ord(acGetVersion2)] := True;
-      Checked[Ord(acGetStart)] := True;
-    end;
-    if Checked[Ord(acGetRealtime2)] then begin
-      Checked[Ord(acGetTime1)] := True;
-      Checked[Ord(acGetVersion2)] := True;
-      Checked[Ord(acGetStart)] := True;
     end;
 
   end;
@@ -1056,7 +1034,6 @@ begin
       acGetCheckupDays: ShowGetCheckupDays;
 
       acGetMemory0: ShowGetMemory0;
-      acGetRealtime2: ShowGetRealtime2;
       acGetMemory1: ShowGetMemory1;
       acGetMemory12: ShowGetMemory12;
       acGetMemory2: ShowGetMemory2;
@@ -1071,9 +1048,6 @@ begin
       acGetCBYTE: ShowGetCBYTE;
       acGetFCVAR: ShowGetFCVAR;
 
-      acGetEchoNtoN: ShowGetEchoNtoN;
-      acGetEchoNto1: ShowGetEchoNto1;
-      acGetEcho1toN: ShowGetEcho1toN;
     end;
 end;
 
@@ -1083,14 +1057,9 @@ begin
   if bVersion < 4 then raise Exception.Create('ƒанный запрос поддерживаетс€ сумматором начина€ с версии 4 !');
 end;
 
-procedure SetVersion(v: shortint);
+procedure SetVersion(b: shortint);
 begin
-  bVersion := v;
-end;
-
-function GetVersion: shortint;
-begin
-  Result := bVersion;
+  bVersion := b;
 end;
 
 end.

@@ -30,6 +30,7 @@ end;
 
 procedure BoxGetEngGrpMonX2;
 begin
+  TestVersion4;
   if TestMonths then begin
     bMon := ibMinMon;
     QueryGetEngGrpMonX2;

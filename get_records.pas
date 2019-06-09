@@ -31,7 +31,7 @@ const
 
 implementation
 
-uses SysUtils, kernel, support, soutput, main, timez, realz, box, progress;
+uses SysUtils, kernel, support, soutput, main, timez, realz, box, progress, t_entry;
 
 const
   quGetRecords:   querys = (Action: acGetRecords0;  cwOut: 7+3; cwIn: 0; bNumber: $FF);
@@ -177,14 +177,30 @@ begin
   AddInfo('Журнал состояния счётчиков (расширенный):');
   AddInfo('');
 
+  InitEntry();
   QueryGetRecordsRunX(0);
 end;
 
 function GetRecTime(i: byte): string;
 var
-  timT: times;
+  tm: times;
 begin
-  with timT do begin
+  with tm do begin
+    bSecond := mpbRec[i+0];
+    bMinute := mpbRec[i+1];
+    bHour   := mpbRec[i+2];
+
+    Result := Int2Str(bHour)   + ':' +
+              Int2Str(bMinute) + ':' +
+              Int2Str(bSecond);
+  end;
+end;
+
+function GetRecTimeDate(i: byte): string;
+var
+  tm: times;
+begin
+  with tm do begin
     bSecond := mpbRec[i+0];
     bMinute := mpbRec[i+1];
     bHour   := mpbRec[i+2];
@@ -269,6 +285,16 @@ begin
     2: Result := 'специальный 1';
     3: Result := 'специальный 2';
     4: Result := 'специальный 3';
+    5: Result := 'специальный 4';
+    else Result := 'неизвестный режим';
+  end;
+end;
+
+function GetRecTariffMode: string;
+begin
+  case mpbRec[0] of
+    0: Result := 'все тарифы';
+    255: Result := 'пиковые тарифы';
     else Result := 'неизвестный режим';
   end;
 end;
@@ -370,8 +396,10 @@ var
   i:    byte;
   stT:  string;
   w1:   word;
+  tm:   times;
 begin
-  Result := PackStrL(PopTimes2Str,20) + ' ' +
+  tm := PopTimes();
+  Result := PackStrL(Times2Str(tm),20) + ' ' +
             PackStrL(IntToStr((PopInt shl 16)+PopInt),4) + ' ';
 
   bRecCode := Pop;
@@ -387,7 +415,7 @@ begin
 
   case bRecCode of
     0: stT := 'начало догонки';
-    26: stT := 'начало догонки после выключения ' + GetRecTime(0);
+    26: stT := 'начало догонки после выключения ' + GetRecTimeDate(0);
     1: stT := 'конец  догонки';
     2: stT := 'watchdog reset';
     3: stT := 'запуск';
@@ -414,11 +442,20 @@ begin
     24: stT := 'начало аварийного расчета';
     25: stT := 'конец  аварийного расчета';
 
+    27: stT := 'спец. 4: задание группы: '+IntToStr(mpbRec[0]+1);
+    28: stT := 'спец. 4: задание уровня вкл./выкл. реле 1,2: '+GetRecReal(0);
+    29: stT := 'спец. 4: задание тарифов: '+GetRecTariffMode();
+    30: stT := 'спец. 4: задание таймаута '+IntToStr(mpbRec[0]) + ' сек.';
+    37: stT := 'спец. 4: авто. - реле 1,2 вкл.  '+GetRecValue('>');
+    38: stT := 'спец. 4: авто. - реле 1,2 выкл. '+'после таймаута '+IntToStr(mpbRec[0]) + ' сек.';
+    60: stT := 'спец. 4: ручн. - реле 1,2 вкл.  ';
+    61: stT := 'спец. 4: ручн. - реле 1,2 выкл. ';
+
     32: stT := 'нет связи со счетчиком: код '+IntToStr(mpbRec[0])+'.'+IntToStr(mpbRec[1]);
     33: stT := 'нет событий в таблице счетчика !';
     34: stT := 'пропущены события после последного опроса:'+GetRecEvent(mpbRec[1]);
-    35: stT := 'время - '+GetRecTime(1)+GetRecEvent(mpbRec[7]);   // СЭТ-4ТМ.02
-    36: stT := 'время - '+GetRecTime(1)+GetRecEvent(mpbRec[7]);   // Меркурий-230
+    35: stT := 'время - '+GetRecTimeDate(1)+GetRecEvent(mpbRec[7]);   // СЭТ-4ТМ.02
+    36: stT := 'время - '+GetRecTimeDate(1)+GetRecEvent(mpbRec[7]);   // Меркурий-230
 
     40: stT := 'редактирование каналов: до     '+GetRecDigital;
     41: stT := 'редактирование каналов: после  '+GetRecDigital;
@@ -447,7 +484,7 @@ begin
     74: stT := 'данные: '+GetRecReal(1);
     75: stT := 'Esc U: OK';
     76: stT := 'Esc U: ошибка';
-    77: stT := 'данные: '+GetRecTime(1);
+    77: stT := 'данные: '+GetRecTimeDate(1);
     78: stT := 'завершение: опрос счётчиков';
     79: stT := 'завершение: '+IntToStr(mpbRec[3]*$100+mpbRec[4])+'/'+IntToStr(mpbRec[1]*$100+mpbRec[2]);
     97: stT := 'завершение: '+GetRecInt(2)+'-'+GetRecInt(4)+'; принято '+GetRecInt(0);
@@ -464,7 +501,10 @@ begin
     90: stT := 'без расчёта';
     91: stT := 'начало расчёта 2';
     92: stT := 'конец  расчёта 2';
-    93: stT := 'ошибка '+IntToHex(mpbRec[1],2)+'.'+IntToHex(mpbRec[2],2)+'.'+IntToHex(mpbRec[3],2);
+    93: begin
+        stT := 'ошибка '+IntToHex(mpbRec[1],2)+'.'+IntToHex(mpbRec[2],2)+'.'+IntToHex(mpbRec[3],2);
+        AddEntry(mpbRec[0],tm);
+        end;
     94: stT := 'опрос завершен за ' + Int2Str(w1 div 60)+':'+Int2Str(w1 mod 60);
     95: stT := 'начало очистки пустых профилей '+GetRecInt(1)+' '+GetRecInt(3)+'/'+GetRecInt(5);
     96: stT := 'конец  очистки пустых профилей ';
@@ -479,7 +519,7 @@ begin
     111: stT := 'Трехминутный опрос: перерасчет невозможен';
     112: stT := 'Трехминутный опрос: переполнение';
 
-    113: stT := 'дублированный профиль: ' + GetRecTime(0);
+    113: stT := 'дублированный профиль: ' + GetRecTimeDate(0);
 
     114: stT := 'плохая связь: '+IntToStr(mpbRec[0])+' из '+IntToStr(mpbRec[1])+' (лимит '+IntToStr(mpbRec[2])+' из '+IntToStr(mpbRec[1]) + ')';
 
@@ -523,21 +563,22 @@ begin
     192: stT := 'GPS ручное требование коррекции';
     193: stT := 'GPS авто. требование коррекции';
     194: stT := 'GPS ошибочный запрос';
-    195: stT := 'GPS ответ: '+GetRecTime(0);
+    195: stT := 'GPS ответ: '+GetRecTimeDate(0);
     196: stT := 'GPS ошибка состояния: '+IntToStr(mpbRec[0]);
-    197: stT := 'GPS время: '+GetRecTime(0) + ' пояс ' +IntToStr(mpbRec[6]);
+    197: stT := 'GPS время: '+GetRecTimeDate(0) + ' пояс ' +IntToStr(mpbRec[6]);
     198: stT := 'GPS ошибка формата времени';
     199: stT := 'GPS ошибка: даты различны';
     200: stT := 'GPS ошибка: получасы различны';
     201: stT := 'GPS коррекция: ОК';
 
-    210: stT := 'коррекция c клавиатуры: '+GetRecTime(0);
-    211: stT := 'коррекция - запрос 0xFF 0x0B: '+GetRecTime(0);
-    212: stT := 'коррекция - запрос Esc K: '+GetRecTime(0);
-    213: stT := 'коррекция - запрос Esc k: '+GetRecTime(0);
-    214: stT := 'коррекция 1: '+GetRecTime(0);
-    215: stT := 'коррекция 2: '+GetRecTime(0);
-    216: stT := 'коррекция 3: '+GetRecTime(0);
+    210: stT := 'коррекция c клавиатуры: '+GetRecTimeDate(0);
+    211: stT := 'коррекция - запрос 0xFF 0x0B: '+GetRecTimeDate(0);
+    212: stT := 'коррекция - запрос Esc K: '+GetRecTimeDate(0);
+    213: stT := 'коррекция - запрос Esc k: '+GetRecTimeDate(0);
+    214: stT := 'коррекция 1: '+GetRecTimeDate(0);
+    215: stT := 'коррекция 2: '+GetRecTimeDate(0);
+    216: stT := 'коррекция 3: '+GetRecTime(0); // работает с ошибкой
+    209: stT := 'коррекция 3: '+GetRecTime(0)+' -> '+GetRecTime(3);
     217: stT := 'коррекция: ОК';
 
     218: begin
@@ -558,9 +599,9 @@ begin
     220: stT := 'СИМЭК-48 ручное требование коррекции';
     221: stT := 'СИМЭК-48 авто. требование коррекции';
     222: stT := 'СИМЭК-48 ошибочный запрос';
-    223: stT := 'СИМЭК-48 ответ: '+GetRecTime(0);
+    223: stT := 'СИМЭК-48 ответ: '+GetRecTimeDate(0);
     224: stT := 'СИМЭК-48 ошибка состояния: ?';
-    225: stT := 'СИМЭК-48 время: '+GetRecTime(0);
+    225: stT := 'СИМЭК-48 время: '+GetRecTimeDate(0);
     226: stT := 'СИМЭК-48 ошибка формата времени';
     227: stT := 'СИМЭК-48 ошибка: даты различны';
     228: stT := 'СИМЭК-48 ошибка: получасы различны';
@@ -609,7 +650,7 @@ begin
      end;
     end;
 
-//    AddInfo('=');
+//    AddInfo('');
     with prbMain do Position := bPage+1;
 
     if bPage < GetRecord1Pages(wFreePageSize)-1 then begin
@@ -649,7 +690,10 @@ begin
       Inc(wPage);
       QueryGetRecordsX;
     end
-    else RunBox;
+    else begin
+      AddInfoAll(ResultEntry());
+      RunBox;
+    end;
   end;
 end;
 

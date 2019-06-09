@@ -30,6 +30,7 @@ end;
 
 procedure BoxGetEngGrpDayX2;
 begin
+  TestVersion4;
   if TestDays then begin
     bDay := ibMinDay;
     QueryGetEngGrpDayX2;

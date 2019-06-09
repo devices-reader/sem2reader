@@ -7,7 +7,7 @@ procedure ShowGetMemory1;
 
 implementation
 
-uses SysUtils, Classes, soutput, support, progress, box, kernel, terminal, crc;
+uses SysUtils, Classes, soutput, support, progress, box, kernel, terminal, crc, get_time, get_start, get_memory0, calendar2, t_realtime;
 
 const
   quGetMemory1: querys = (Action: acGetMemory1; cwOut: 7+2; cwIn: 0; bNumber: 249);
@@ -81,7 +81,7 @@ begin
 
   l.add('');
   l.add('');
-  l.add('–аспределение пам€ти');
+  l.add('*„тение состо€ни€ пам€ти (верси€ 1)');
   l.add('');
   l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при сигнале ''«ан€то''');
   l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при сравнении');
@@ -212,6 +212,30 @@ begin
   l.add(PackStrR(IntToStr(pwCntDayCan7),GetColWidth) + 'адрес начала значений счетчиков на начало суток');
 
   AddInfoAll(l);
+{
+  AddInfo(Times2Str(tiCurr));
+  AddInfo(Times2Str(Min1IndexToDate(DateToMin1Index(tiCurr))));
+  AddInfo(Times2Str(Min3IndexToDate(DateToMin3Index(tiCurr))));
+  AddInfo(Times2Str(Min30IndexToDate(DateToMin30Index(tiCurr))));
+  AddInfo(Times2Str(DayIndexToDate(DateToDayIndex(tiCurr))));
+  AddInfo(Times2Str(MonIndexToDate(DateToMonIndex(tiCurr))));
+}
+  if GetVersion = 2 then begin
+    AddInfo('');
+    AddInfo('');
+    AddInfo('*„тение состо€ни€ пам€ти (верси€ 1)');
+    AddInfo('');
+    ShowMin1(cdwMinute1);
+    ShowMin3(cdwMinute3,ibMnt);
+    ShowMin30(cdwMinute30,iwHou);
+    ShowDay(cwDay,ibDay);
+    ShowMon(cwMonth,ibMon);
+  end
+  else begin
+    AddInfo('');
+    AddInfo('дл€ данной версии сумматора следует использовать запрос: „тение состо€ни€ пам€ти (верси€ 2)');
+    AddInfo('');
+  end;
 
   BoxRun;
 end;

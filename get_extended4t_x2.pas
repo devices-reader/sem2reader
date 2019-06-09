@@ -57,6 +57,7 @@ end;
 
 procedure BoxGetExt40TX2;
 begin
+  TestVersion4;
   if TestCanals and TestMonths then begin
     AddInfo('');
     AddInfo('«начени€ счЄтчиков на начало мес€ца по тарифам (из буфера с дозапросом) (двойна€ точность)');

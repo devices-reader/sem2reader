@@ -1,14 +1,17 @@
-unit calendar;
+unit calendar2;
 
 interface
 
 uses timez;
 
-function DateToThreeIndex(tiT: times): longword;
-function ThreeIndexToDate(dwT: longword): times;
+function DateToMin1Index(tiT: times): longword;
+function Min1IndexToDate(dwT: longword): times;
 
-function DateToHalfIndex(tiT: times): longword;
-function HalfIndexToDate(dwT: longword): times;
+function DateToMin3Index(tiT: times): longword;
+function Min3IndexToDate(dwT: longword): times;
+
+function DateToMin30Index(tiT: times): longword;
+function Min30IndexToDate(dwT: longword): times;
 
 function DateToDayIndex(tiT: times): longword;
 function DayIndexToDate(dwT: longword): times;
@@ -37,7 +40,49 @@ begin
     Result := mpbDaysInMonth[bMonth];
 end;
 
-function DateToThreeIndex(tiT: times): longword;
+function DateToMin1Index(tiT: times): longword;
+var
+  i:  byte;
+begin
+  Result := 0;
+
+  for i:=0 to tiT.bYear-1 do
+    Result := Result + GetDaysInYear(i);
+
+  for i:=1 to tiT.bMonth-1 do
+    Result := Result + GetDaysInMonth(tiT.bYear,i);
+
+  Result := Result + tiT.bDay - 1;
+  Result := Result * 1440;
+  Result := Result + tiT.bHour*60 + tiT.bMinute div 1;
+end;
+
+function Min1IndexToDate(dwT: longword): times;
+begin
+  Result.bYear := 0;
+  while (dwT >= 1440*GetDaysInYear(Result.bYear)) do begin
+    dwT := dwT - 1440*GetDaysInYear(Result.bYear);
+    Inc(Result.bYear);
+  end;
+
+  Result.bMonth := 1;
+  while (dwT >= 1440*GetDaysInMonth(Result.bYear,Result.bMonth)) do begin
+    dwT := dwT - 1440*GetDaysInMonth(Result.bYear,Result.bMonth);
+    Inc(Result.bMonth);
+  end;
+
+  Result.bDay := dwT div 1440;
+  dwT := dwT - Result.bDay*1440;
+  Inc(Result.bDay);
+
+  Result.bHour := dwT div 60;
+  dwT := dwT - Result.bHour*60;
+
+  Result.bMinute := dwT*1;
+  Result.bSecond := 0;
+end;
+
+function DateToMin3Index(tiT: times): longword;
 var
   i:  byte;
 begin
@@ -54,7 +99,7 @@ begin
   Result := Result + tiT.bHour*20 + tiT.bMinute div 3;
 end;
 
-function ThreeIndexToDate(dwT: longword): times;
+function Min3IndexToDate(dwT: longword): times;
 begin
   Result.bYear := 0;
   while (dwT >= 480*GetDaysInYear(Result.bYear)) do begin
@@ -79,7 +124,7 @@ begin
   Result.bSecond := 0;
 end;
 
-function DateToHalfIndex(tiT: times): longword;
+function DateToMin30Index(tiT: times): longword;
 var
   i:  byte;
 begin
@@ -96,7 +141,7 @@ begin
   Result := Result + tiT.bHour*2 + tiT.bMinute div 30;
 end;
 
-function HalfIndexToDate(dwT: longword): times;
+function Min30IndexToDate(dwT: longword): times;
 begin
   Result.bYear := 0;
   while (dwT >= 48*GetDaysInYear(Result.bYear)) do begin

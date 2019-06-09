@@ -203,7 +203,6 @@ type
     btbSaveChart: TBitBtn;
     btbStopChart: TBitBtn;
     chbChart: TCheckBox;
-    sd_ChartToFile: TSaveDialog;
     procedure ShowConnect;
     procedure SetBaud(dwBaud: longword);
     procedure SetComNumber(wComNumber: word);
@@ -283,8 +282,6 @@ type
     procedure IdTCPClientWorkEnd(Sender: TObject; AWorkMode: TWorkMode);
     procedure stbMainDrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
       const Rect: TRect);
-    procedure btbClearChartClick(Sender: TObject);
-    procedure btbSaveChartClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -958,13 +955,6 @@ begin
   end;
 end;
 
-procedure TfrmMain.btbClearChartClick(Sender: TObject);
-begin
-  inherited;
-  if chbChart.Enabled then
-    crtMain.Series[0].Clear;
-end;
-
 procedure TfrmMain.btbClearTerminalClick(Sender: TObject);
 begin
   inherited;
@@ -1109,32 +1099,6 @@ begin
   ClearInfo;
 end;
 
-procedure TfrmMain.btbSaveChartClick(Sender: TObject);
-begin
-  inherited;
-  with sd_ChartToFile do begin
-    try
-      InitialDir := ExtractFileDir(ParamStr(0));
-
-      ForceDirectories(InitialDir);
-
-      case FilterIndex of
-        1: FileName := 'График ' + DateTime2Str + ' ' + '.bmp';
-        2: FileName := 'График ' + DateTime2Str + ' ' + '.wmf';
-      end;
-
-      if Execute then begin
-        case FilterIndex of
-          1: crtMain.SaveToBitmapFile(FileName);
-          2: crtMain.SaveToMetafile(FileName);
-        end;
-      end;
-    except
-      ErrBox('Ошибка при сохранении графика !')
-    end;
-  end;
-end;
-
 procedure TfrmMain.btbSaveInfoClick(Sender: TObject);
 begin
   inherited;
@@ -1144,9 +1108,6 @@ end;
 procedure TfrmMain.btbRunClick(Sender: TObject);
 begin
   inherited;
-  if chbChart.Enabled then
-    crtMain.Series[0].Clear;
-
   HistogramsInit;
   BoxRead;
 end;

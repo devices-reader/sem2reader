@@ -11,9 +11,12 @@ procedure ShowGetExt40;
 procedure ShowGetExt41;
 procedure ShowGetExt42;
 
+var
+  mpExt42CntCanMon: array[0..CANALS-1,0..MONTHS-1] of extended;
+
 implementation
 
-uses SysUtils, soutput, support, realz, timez, borders, box, progress;
+uses SysUtils, soutput, support, realz, timez, borders, box, progress, calendar;
 
 const
   quGetExt40: querys = (Action: acGetExt40; cwOut: 7+10; cwIn: 0;       bNumber: $FF);
@@ -45,7 +48,7 @@ procedure QueryGetExt40;
 begin
   InitPushCRC;
   Push(42);
-  Push(bMon);
+  Push((12+(tiCurr.bMonth-1)-bMon) mod 12);
   if PushCanMask then Query(quGetExt40);
 end;
 
@@ -53,7 +56,7 @@ procedure QueryGetExt41;
 begin
   InitPushCRC;
   Push(43);
-  Push(bMon);
+  Push((12+(tiCurr.bMonth-1)-bMon) mod 12);
   Push(bCan);
   Query(quGetExt41);
 end;
@@ -62,7 +65,7 @@ procedure QueryGetExt42;
 begin
   InitPushCRC;
   Push(44);
-  Push(bMon);
+  Push((12+(tiCurr.bMonth-1)-bMon) mod 12);
   Push(bCan);
   Query(quGetExt42);
 end;
@@ -111,7 +114,8 @@ begin
   InitPop(15);
 
   AddInfo('');
-  AddInfo(' мес€ц '+IntToStr(bMon+1) + ' ' +LongMonthNames[bMon+1]);
+  AddInfo(' мес€ц -'+IntToStr(bMon) + ' ' + Times2StrMon(MonIndexToDate(DateToMonIndex(tiCurr)-bMon)));
+
   for Can := 0 to CANALS-1 do if CanalChecked(Can) then begin
     s := PackStrR('канал ' + IntToStr(Can+1),GetColWidth);
     s := s + PackStrR(PopStatus2Str,GetColWidth*2);
@@ -139,17 +143,17 @@ begin
 
   if (bCan = MinCan) then begin
     AddInfo('');
-    AddInfo(' мес€ц '+IntToStr(bMon+1) + ' ' +LongMonthNames[bMon+1]);
-  end;  
-  
+    AddInfo(' мес€ц -'+IntToStr(bMon) + ' ' + Times2StrMon(MonIndexToDate(DateToMonIndex(tiCurr)-bMon)));
+  end;
+
   s := PackStrR('канал ' + IntToStr(bCan+1),GetColWidth);
   s := s + PackStrR(PopStatus2Str,GetColWidth*2);
   s := s + PackStrR(IntToStr(PopInt)+' - '+IntToStr(PopInt),GetColWidth);
   s := s + PackStrR(Reals2StrR(PopReals),GetColWidth);
   s := s + PackStrR(PopTimes2Str,GetColWidth);
   AddInfo(s);
-  
-  ShowProgress(bMon-ibMinMon, ibMaxMon-ibMinMon+1);  
+
+  ShowProgress(bMon-ibMinMon, ibMaxMon-ibMinMon+1);
 
   Inc(bCan);
   while (bCan <= MaxCan) and (not CanalChecked(bCan)) do begin
@@ -172,19 +176,22 @@ end;
 procedure ShowGetExt42;
 var
   s:    string;
+  e:    extended;
 begin
   Stop;
   InitPop(15);
 
   if (bCan = 0{bMinCan-1}) then begin
     AddInfo('');
-    AddInfo(' мес€ц '+IntToStr(bMon+1) + ' ' +LongMonthNames[bMon+1]);
-  end;  
-  
+    AddInfo(' мес€ц -'+IntToStr(bMon) + ' ' + Times2StrMon(MonIndexToDate(DateToMonIndex(tiCurr)-bMon)));
+  end;
+
   s := PackStrR('канал ' + IntToStr(bCan+1),GetColWidth);
   s := s + PackStrR(PopStatus2Str,GetColWidth*2);
   s := s + PackStrR(IntToStr(PopInt)+' - '+IntToStr(PopInt),GetColWidth);
-  s := s + PackStrR(Reals2StrR(PopReals),GetColWidth);
+  e := PopReals;
+  mpExt42CntCanMon[bCan,bMon] := e;
+  s := s + PackStrR(Reals2StrR(e),GetColWidth);
   s := s + PackStrR(PopTimes2Str,GetColWidth);
   AddInfo(s);
   
