@@ -196,6 +196,12 @@ type
     acGetEchoNto1,
     acGetEcho1toN,
 
+    acGetTimeoutHistogram35,
+    acGetLogs35,
+    acGetCounters35,
+    acGetLogs39,
+    acGetCounters39,
+
     acNone,
     acCtrlZ,
 
@@ -264,7 +270,9 @@ get_enggrpprevhou_def, get_powgrpprevhou_def, get_enggrpday_def, get_enggrpmon_d
 get_enggrpday_x2, get_enggrpmon_x2,
 get_review,
 get_current, get_current4, get_contacts3, get_calc1, get_calc2, get_calc3, get_stat1,
-histograms, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n;
+histograms, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n,
+get_timeout_histogram35,get_logs35,get_counters35,
+get_logs39,get_counters39;
 
 var
   BoxStart:     TDateTime;
@@ -467,7 +475,14 @@ begin
     Items[Ord(acGetEchoNto1)]   := ('*проверка канала связи N к 1');
     Items[Ord(acGetEcho1toN)]   := ('*проверка канала связи 1 к N');
 
-    for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];    
+    Items[Ord(acGetTimeoutHistogram35)] := ('*таймауты счетчиков CExxx NNCL2');
+    Items[Ord(acGetLogs35)]             := ('*события счетчиков CExxx NNCL2');
+    Items[Ord(acGetCounters35)]         := ('*счетчики счетчиков CExxx NNCL2');
+
+    Items[Ord(acGetLogs39)]             := ('*события счетчиков CC-301 DLMS');
+    Items[Ord(acGetCounters39)]         := ('*счетчики счетчиков CC-301 DLMS');
+
+    for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];
   end;
 end;
 
@@ -667,6 +682,13 @@ begin
         Ord(acGetEchoNtoN): begin BoxGetEchoNtoN; Inc(iwBox); exit; end;
         Ord(acGetEchoNto1): begin BoxGetEchoNto1; Inc(iwBox); exit; end;
         Ord(acGetEcho1toN): begin BoxGetEcho1toN; Inc(iwBox); exit; end;
+
+        Ord(acGetTimeoutHistogram35): begin BoxGetTimeoutHistogram35; Inc(iwBox); exit; end;
+        Ord(acGetLogs35): begin BoxGetLogs35; Inc(iwBox); exit; end;
+        Ord(acGetCounters35): begin BoxGetCounters35; Inc(iwBox); exit; end;
+
+        Ord(acGetLogs39): begin BoxGetLogs39; Inc(iwBox); exit; end;
+        Ord(acGetCounters39): begin BoxGetCounters39; Inc(iwBox); exit; end;
 
         else ErrBox('Ошибка при задании списка запросов !');
       end;
@@ -1074,6 +1096,13 @@ begin
       acGetEchoNtoN: ShowGetEchoNtoN;
       acGetEchoNto1: ShowGetEchoNto1;
       acGetEcho1toN: ShowGetEcho1toN;
+
+      acGetTimeoutHistogram35: ShowGetTimeoutHistogram35;
+      acGetLogs35: ShowGetLogs35;
+      acGetCounters35: ShowGetCounters35;
+
+      acGetLogs39: ShowGetLogs39;
+      acGetCounters39: ShowGetCounters39;
     end;
 end;
 

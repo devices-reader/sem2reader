@@ -12,7 +12,7 @@ var
 
 implementation
 
-uses SysUtils, Classes, soutput, support, borders, progress, box, timez, realz, calendar, main;
+uses SysUtils, Classes, soutput, support, borders, progress, box, timez, realz, calendar, main, calc_maxpow;
 
 const
   quGetEngGrpHou: querys = (Action: acGetEngGrpHou; cwOut: 7+6; cwIn: 0; bNumber: $FF;);
@@ -65,6 +65,7 @@ begin
         begin
           mpeEngGDH[Grp,ibDay,Hou] := eT;
           mpeEngGD[Grp,ibDay] := mpeEngGD[Grp,ibDay] + eT;
+          //CalcMaxPow_CalcMax(tiCurr, Grp,ibDay,Hou,eT);
         end;
       end;
     end;

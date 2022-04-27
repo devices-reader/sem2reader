@@ -1,7 +1,5 @@
 program sem2reader;
 
-
-
 uses
   Forms,
   Windows,
@@ -159,7 +157,14 @@ uses
   t_entry in 't_entry.pas',
   calendar2 in 'calendar2.pas',
   t_realtime in 't_realtime.pas',
-  get_realtime2 in 'get_realtime2.pas';
+  get_realtime2 in 'get_realtime2.pas',
+  get_timeout_histogram35 in 'get_timeout_histogram35.pas',
+  get_counters35 in 'get_counters35.pas',
+  get_logs35 in 'get_logs35.pas',
+  get_counters39 in 'get_counters39.pas',
+  get_logs39 in 'get_logs39.pas',
+  calc_maxpow in 'calc_maxpow.pas',
+  t_tariff in 't_tariff.pas';
 
 {$R *.RES}
 

@@ -12,6 +12,9 @@ type
     bYear:      byte;
   end;
 
+const
+  tiZero: times = (bSecond:0; bMinute:0; bHour:0; bDay:0; bMonth:0; bYear:0);
+
 function ToTimes(daT: TDateTime): times;
 function DeltaTimes2Str(tiT: times; tiS: times): string;
 function PopTimes: times;

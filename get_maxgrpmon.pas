@@ -12,7 +12,7 @@ procedure ShowGetMaxGrpMon;
 
 implementation
 
-uses SysUtils, soutput, support, borders, progress, box, timez, realz, calendar;
+uses SysUtils, soutput, support, borders, progress, box, timez, realz, calendar, calc_maxpow;
 
 const
   quGetMaxGrpMon: querys = (Action: acGetMaxGrpMon; cwOut: 7+6; cwIn: 0; bNumber: $FF);
@@ -59,9 +59,9 @@ begin
   else begin
     AddInfo('');
     AddInfo('ћаксимумы мощности по группам за мес€ц');
-    
+
     for x := ibMinMon to ibMaxMon do begin
-    
+
     AddInfo('');
     AddInfo('мес€ц -' + IntToStr(x) + ' ' + Times2StrMon(MonIndexToDate(DateToMonIndex(tiCurr)-x)));
 
@@ -76,9 +76,11 @@ begin
       AddInfo(s);
     end;
     end;
-      
+
+    //ShowMax(tiCurr);
+
     RunBox;
-  end;  
+  end;
 end;
 
 end.

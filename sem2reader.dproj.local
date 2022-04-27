@@ -1,18 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.389,D:\Home\Delphi\sem2reader\get_engfrac1a.pas=D:\Home\Delphi\sem2reader\get_engfrac1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.862,=D:\Home\Delphi\sem2reader\get_echo_n_to_n.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.205,=D:\Home\Delphi\sem2reader\get_review.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.884,=D:\Home\Delphi\sem2reader\get_echo_1_to_n.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.840,=D:\Home\Delphi\sem2reader\get_echo_n_to_1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.754,=D:\Home\Delphi\sem2reader\histograms.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.505,=D:\Home\Delphi\sem2reader\get_realtime2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.862,=D:\Home\Delphi\sem2reader\get_echo_n_to_n.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.295,=D:\Home\Delphi\sem2reader\t_realtime.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.003,D:\Home\Delphi\sem2reader\t_records2.pas=D:\Home\Delphi\sem2reader\t_entry.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.488,=D:\Home\Delphi\sem2reader\t_records2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.289,=D:\Home\Delphi\sem2reader\calendar2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.732,=D:\Home\Delphi\sem2reader\histogram.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.369,=D:\Home\Delphi\sem2reader\get_engfrac1b.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.088,E:\Home\Delphi\sem2reader\t_maxpow_grpmon.pas=E:\Home\Delphi\sem2reader\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.884,=E:\Home\Delphi\sem2reader\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.048,=E:\Home\Delphi\sem2reader\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.975,E:\Home\Delphi\sem2reader\calc_maxpow.pas=E:\Home\Delphi\sem2reader\t_maxpow_grpmon.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.263,=D:\Home\Delphi\sem2reader\get_logs39.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.762,E:\Home\Delphi\sem2reader\t_tariff.pas=E:\Home\Delphi\sem2reader\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.488,=D:\Home\Delphi\sem2reader\t_records2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.239,=D:\Home\Delphi\sem2reader\get_counters39.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.593,=D:\Home\Delphi\sem2reader\get_counters35.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.205,=D:\Home\Delphi\sem2reader\get_review.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.732,=D:\Home\Delphi\sem2reader\histogram.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.289,=D:\Home\Delphi\sem2reader\calendar2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.568,=D:\Home\Delphi\sem2reader\get_timeout_histogram35.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.840,=D:\Home\Delphi\sem2reader\get_echo_n_to_1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.884,=D:\Home\Delphi\sem2reader\get_echo_1_to_n.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.618,=D:\Home\Delphi\sem2reader\get_logs35.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.389,D:\Home\Delphi\sem2reader\get_engfrac1a.pas=D:\Home\Delphi\sem2reader\get_engfrac1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.754,=D:\Home\Delphi\sem2reader\histograms.pas</Transaction>
   </Transactions>
 </BorlandProject>

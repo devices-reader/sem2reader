@@ -329,7 +329,7 @@ begin
 
     AddTerminalTime('// принято ' + IntToStr(cwIn) + ' байт (доступно ' + IntToStr(Length(sCurr)) + ' из ' + IntToStr(queQueryCRC.cwIn) + ' байт)',clGray);
 
-    if Length(sCurr) >= queQueryCRC.cwIn  then begin
+    if Length(sCurr) >= queQueryCRC.cwIn then begin
       PostInputSocket(sCurr);
       sCurr := '';
     end;
@@ -903,9 +903,9 @@ begin
   AddTerminal('OnTapiStatus event',clGray);
 
   if First then
-    AddTerminal('First event',clGray)
+    AddTerminal('first event',clGray)
   else if Last then
-    AddTerminal('Last event',clGray)
+    AddTerminal('last event',clGray)
   else with TapiDevice do begin
     AddTerminal('событие: ' + TapiStatusMsg(Message,Param1,Param2) + ' ' + Number,clGray);
     AddDial('событие: ' + TapiStatusMsg(Message,Param1,Param2) + ' ' + Number);

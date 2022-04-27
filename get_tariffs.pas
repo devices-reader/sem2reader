@@ -18,34 +18,19 @@ procedure ShowGetEngTariffs;
 
 implementation
 
-uses SysUtils, soutput, support, progress, box, kernel;
+uses SysUtils, soutput, support, progress, box, kernel, t_tariff, calc_maxpow;
 
 const
-  TARIFFS_BREAKS  = 6;
-  TARIFFS_MONTHS  = 12;  
+  quGetPublic:      querys = (Action: acGetPublic;     cwOut: 1+6; cwIn: 5+2+2;  bNumber: 14);
+  quGetPowTariffs:  querys = (Action: acGetPowTariffs; cwOut: 3+6; cwIn: 5+19+2; bNumber: 18);
+  quGetEngTariffs:  querys = (Action: acGetEngTariffs; cwOut: 3+6; cwIn: 5+19+2; bNumber: 20);
+  quGetPubTariffs:  querys = (Action: acGetPubTariffs; cwOut: 3+6; cwIn: 5+19+2; bNumber: 22);
 
-  quGetPublic:      querys = (Action: acGetPublic;     cwOut: 1+6; cwIn: 5+2+2;  bNumber: 14);   
-  quGetPowTariffs:  querys = (Action: acGetPowTariffs; cwOut: 3+6; cwIn: 5+19+2; bNumber: 18); 
-  quGetEngTariffs:  querys = (Action: acGetEngTariffs; cwOut: 3+6; cwIn: 5+19+2; bNumber: 20); 
-  quGetPubTariffs:  querys = (Action: acGetPubTariffs; cwOut: 3+6; cwIn: 5+19+2; bNumber: 22); 
-
-type
-  tariff = record
-    bHour:      byte;
-    bMinute:    byte;
-    bTariff:    byte;
-  end;
-
-  zones = record
-    bSize:      byte;
-    mpTariffs:  array[1..TARIFFS_BREAKS] of tariff;
-  end;
-  
 var
   ibMon:    byte;
   Zone:     zones;
   mpZonesM: array[0..TARIFFS_MONTHS-1] of zones;
-  
+
 procedure QueryGetPublic;
 begin
   Query(quGetPublic);
@@ -119,7 +104,7 @@ begin
   QueryGetEngTariffs;
 end;
 
-procedure PopTariffs;
+function PopTariffs: zones;
 var
   i:  byte;
 begin
@@ -139,6 +124,8 @@ begin
   end;
 
   mpZonesM[ibMon] := Zone;
+
+  result := Zone;
 end;
 
 procedure ShowTariffs;
@@ -168,10 +155,13 @@ begin
 end;
 
 procedure ShowGetPubTariffs;
+var
+  z: zones;
 begin
   Stop;
-  PopTariffs;
-  
+  z := PopTariffs;
+  //CalcMaxPow_SaveTariffs(ibMon, z);
+
   ShowProgress(ibMon,MONTHS);
   
   Inc(ibMon);
@@ -187,10 +177,13 @@ begin
 end;
 
 procedure ShowGetPowTariffs;
+var
+  z: zones;
 begin
   Stop;
-  PopTariffs;
-  
+  z := PopTariffs;
+  //CalcMaxPow_SaveTariffs(ibMon, z);
+
   ShowProgress(ibMon,MONTHS);
   
   Inc(ibMon);
@@ -200,7 +193,8 @@ begin
   else begin 
     AddInfo('');
     AddInfo('Раздельные тарифы для мощности');
-    ShowTariffs; 
+    ShowTariffs;
+    //CalcMaxPow_LogTariffs;
     RunBox; 
   end;
 end;
