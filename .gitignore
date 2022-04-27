@@ -30,8 +30,8 @@ __history/
 *.~*
 
 # Custom files
-log
-phones
+log/
+phones/
 *.ini
 *.zip
 *.rar
