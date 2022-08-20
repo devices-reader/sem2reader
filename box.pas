@@ -479,8 +479,8 @@ begin
     Items[Ord(acGetLogs35)]             := ('*события счетчиков CExxx NNCL2');
     Items[Ord(acGetCounters35)]         := ('*счетчики счетчиков CExxx NNCL2');
 
-    Items[Ord(acGetLogs39)]             := ('*события счетчиков CC-301 DLMS');
-    Items[Ord(acGetCounters39)]         := ('*счетчики счетчиков CC-301 DLMS');
+    Items[Ord(acGetLogs39)]             := ('*события счетчиков Меркурий-234 СПОДЭС');
+    Items[Ord(acGetCounters39)]         := ('*счетчики счетчиков Меркурий-234 СПОДЭС');
 
     for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];
   end;

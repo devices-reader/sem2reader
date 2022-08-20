@@ -33,7 +33,7 @@ begin
   InitPopCRC;
 
   AddInfo('');
-  AddInfo('*Счетчики счетчиков CC-301 DLMS');
+  AddInfo('*Счетчики счетчиков Меркурий-234 СПОДЭС');
 
   for i := 0 to $100-1 do begin
     s :=     PackStrR(IntToStr(i),GetColWidth);

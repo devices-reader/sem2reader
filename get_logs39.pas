@@ -33,7 +33,7 @@ begin
   InitPopCRC;
 
   AddInfo('');
-  AddInfo('*События счетчиков CC-301 DLMS');
+  AddInfo('*События счетчиков Меркурий-234 СПОДЭС');
 
   x := PopIntLtl;
   AddInfo('Количество: '+IntToStr(x));
