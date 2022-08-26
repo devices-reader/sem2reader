@@ -1,30 +1,30 @@
-unit get_logs39;
+unit get_logs40;
 
 interface
 
-procedure BoxGetLogs39;
-procedure ShowGetLogs39;
+procedure BoxGetLogs40;
+procedure ShowGetLogs40;
 
 implementation
 
 uses SysUtils, soutput, support, box, timez;
 
 const
-  quGetLogs39: querys = (Action: acGetLogs39; cwOut: 8; cwIn: 5 + 2 + (6+1+2)*100 + 2; bNumber: 252);
+  quGetLogs40: querys = (Action: acGetLogs40; cwOut: 8; cwIn: 5 + 2 + (6+1+2)*100 + 2; bNumber: 252);
 
-procedure QueryGetLogs39;
+procedure QueryGetLogs40;
 begin
   InitPushCRC;
   Push(37);
-  Query(quGetLogs39);
+  Query(quGetLogs40);
 end;
 
-procedure BoxGetLogs39;
+procedure BoxGetLogs40;
 begin
-  QueryGetLogs39;
+  QueryGetLogs40;
 end;
 
-procedure ShowGetLogs39;
+procedure ShowGetLogs40;
 var
   i,x: word;
   s,z: string;
@@ -40,7 +40,7 @@ begin
 
   for i := 0 to 100-1 do begin
     z := IntToStr(i) + ' ';
-    if (x mod 10) = i then z := z + '*' else z := z + ' ';
+    if (x mod 100) = i then z := z + '*' else z := z + ' ';
     s :=     PackStrR(z, GetColWidth);
     s := s + PackStrR(PopTimes2Str,GetColWidth*2);
     s := s + PackStrR(IntToStr(Pop),GetColWidth);

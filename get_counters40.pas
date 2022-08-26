@@ -1,30 +1,30 @@
-unit get_counters39;
+unit get_counters40;
 
 interface
 
-procedure BoxGetCounters39;
-procedure ShowGetCounters39;
+procedure BoxGetCounters40;
+procedure ShowGetCounters40;
 
 implementation
 
 uses SysUtils, soutput, support, box, timez;
 
 const
-  quGetCounters39: querys = (Action: acGetCounters39; cwOut: 8; cwIn: 5 + (6+2)*$100 + 2; bNumber: 252);
+  quGetCounters40: querys = (Action: acGetCounters40; cwOut: 8; cwIn: 5 + (6+2)*$100 + 2; bNumber: 252);
 
-procedure QueryGetCounters39;
+procedure QueryGetCounters40;
 begin
   InitPushCRC;
   Push(38);
-  Query(quGetCounters39);
+  Query(quGetCounters40);
 end;
 
-procedure BoxGetCounters39;
+procedure BoxGetCounters40;
 begin
-  QueryGetCounters39;
+  QueryGetCounters40;
 end;
 
-procedure ShowGetCounters39;
+procedure ShowGetCounters40;
 var
   i,x: word;
   s: string;

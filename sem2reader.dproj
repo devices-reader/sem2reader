@@ -247,8 +247,8 @@
 			<DCCReference Include="get_timeout_histogram35.pas"/>
 			<DCCReference Include="get_counters35.pas"/>
 			<DCCReference Include="get_logs35.pas"/>
-			<DCCReference Include="get_counters39.pas"/>
-			<DCCReference Include="get_logs39.pas"/>
+			<DCCReference Include="get_counters40.pas"/>
+			<DCCReference Include="get_logs40.pas"/>
 			<DCCReference Include="calc_maxpow.pas"/>
 			<DCCReference Include="t_tariff.pas"/>
 			<None Include="sem2reader.todo"/>

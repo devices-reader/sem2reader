@@ -161,8 +161,8 @@ uses
   get_timeout_histogram35 in 'get_timeout_histogram35.pas',
   get_counters35 in 'get_counters35.pas',
   get_logs35 in 'get_logs35.pas',
-  get_counters39 in 'get_counters39.pas',
-  get_logs39 in 'get_logs39.pas',
+  get_counters40 in 'get_counters40.pas',
+  get_logs40 in 'get_logs40.pas',
   calc_maxpow in 'calc_maxpow.pas',
   t_tariff in 't_tariff.pas';
 

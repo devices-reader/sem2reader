@@ -199,8 +199,8 @@ type
     acGetTimeoutHistogram35,
     acGetLogs35,
     acGetCounters35,
-    acGetLogs39,
-    acGetCounters39,
+    acGetLogs40,
+    acGetCounters40,
 
     acNone,
     acCtrlZ,
@@ -272,7 +272,7 @@ get_review,
 get_current, get_current4, get_contacts3, get_calc1, get_calc2, get_calc3, get_stat1,
 histograms, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n,
 get_timeout_histogram35,get_logs35,get_counters35,
-get_logs39,get_counters39;
+get_logs40,get_counters40;
 
 var
   BoxStart:     TDateTime;
@@ -479,8 +479,8 @@ begin
     Items[Ord(acGetLogs35)]             := ('*события счетчиков CExxx NNCL2');
     Items[Ord(acGetCounters35)]         := ('*счетчики счетчиков CExxx NNCL2');
 
-    Items[Ord(acGetLogs39)]             := ('*события счетчиков Меркурий-234 СПОДЭС');
-    Items[Ord(acGetCounters39)]         := ('*счетчики счетчиков Меркурий-234 СПОДЭС');
+    Items[Ord(acGetLogs40)]             := ('*события счетчиков Меркурий-234 СПОДЭС');
+    Items[Ord(acGetCounters40)]         := ('*счетчики счетчиков Меркурий-234 СПОДЭС');
 
     for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];
   end;
@@ -687,8 +687,8 @@ begin
         Ord(acGetLogs35): begin BoxGetLogs35; Inc(iwBox); exit; end;
         Ord(acGetCounters35): begin BoxGetCounters35; Inc(iwBox); exit; end;
 
-        Ord(acGetLogs39): begin BoxGetLogs39; Inc(iwBox); exit; end;
-        Ord(acGetCounters39): begin BoxGetCounters39; Inc(iwBox); exit; end;
+        Ord(acGetLogs40): begin BoxGetLogs40; Inc(iwBox); exit; end;
+        Ord(acGetCounters40): begin BoxGetCounters40; Inc(iwBox); exit; end;
 
         else ErrBox('Ошибка при задании списка запросов !');
       end;
@@ -1101,8 +1101,8 @@ begin
       acGetLogs35: ShowGetLogs35;
       acGetCounters35: ShowGetCounters35;
 
-      acGetLogs39: ShowGetLogs39;
-      acGetCounters39: ShowGetCounters39;
+      acGetLogs40: ShowGetLogs40;
+      acGetCounters40: ShowGetCounters40;
     end;
 end;
 
