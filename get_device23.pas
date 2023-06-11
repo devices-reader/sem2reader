@@ -44,9 +44,9 @@ begin
   
   a := Pop;
   b := Pop;
-  for Can := 0 to CANALS-1 do mpcwErrors1[Can] := PopInt;
-  for Can := 0 to CANALS-1 do mpcwErrors2[Can] := PopInt;
-  for Can := 0 to CANALS-1 do mpcwErrors3[Can] := PopInt;
+  for Can := 0 to CANALS-1 do mpcwErrors1[Can] := PopIntBig;
+  for Can := 0 to CANALS-1 do mpcwErrors2[Can] := PopIntBig;
+  for Can := 0 to CANALS-1 do mpcwErrors3[Can] := PopIntBig;
 
   AddInfo('');
   AddInfo('Cтатистика РСВУ-1400');

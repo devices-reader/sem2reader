@@ -119,7 +119,7 @@ begin
   for Can := 0 to CANALS-1 do if CanalChecked(Can) then begin
     s := PackStrR('канал ' + IntToStr(Can+1),GetColWidth);
     s := s + PackStrR(PopStatus2Str,GetColWidth*2);
-    s := s + PackStrR(IntToStr(PopInt)+' - '+IntToStr(PopInt),GetColWidth);
+    s := s + PackStrR(IntToStr(PopIntBig)+' - '+IntToStr(PopIntBig),GetColWidth);
     s := s + PackStrR(Reals2StrR(PopReals),GetColWidth);
     s := s + PackStrR(PopTimes2Str,GetColWidth);
     AddInfo(s);
@@ -148,7 +148,7 @@ begin
 
   s := PackStrR('канал ' + IntToStr(bCan+1),GetColWidth);
   s := s + PackStrR(PopStatus2Str,GetColWidth*2);
-  s := s + PackStrR(IntToStr(PopInt)+' - '+IntToStr(PopInt),GetColWidth);
+  s := s + PackStrR(IntToStr(PopIntBig)+' - '+IntToStr(PopIntBig),GetColWidth);
   s := s + PackStrR(Reals2StrR(PopReals),GetColWidth);
   s := s + PackStrR(PopTimes2Str,GetColWidth);
   AddInfo(s);
@@ -188,7 +188,7 @@ begin
 
   s := PackStrR('канал ' + IntToStr(bCan+1),GetColWidth);
   s := s + PackStrR(PopStatus2Str,GetColWidth*2);
-  s := s + PackStrR(IntToStr(PopInt)+' - '+IntToStr(PopInt),GetColWidth);
+  s := s + PackStrR(IntToStr(PopIntBig)+' - '+IntToStr(PopIntBig),GetColWidth);
   e := PopReals;
   mpExt42CntCanMon[bCan,bMon] := e;
   s := s + PackStrR(Reals2StrR(e),GetColWidth);

@@ -63,7 +63,7 @@ begin
     end;
       
     s := PackStrR(s,2*GetColWidth);
-    s := s + IntToStr(PopInt);
+    s := s + IntToStr(PopIntBig);
     AddInfo(s);  
   end;  
 

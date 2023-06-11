@@ -201,6 +201,7 @@ type
     acGetCounters35,
     acGetLogs40,
     acGetCounters40,
+    acGetRealtimeIndices,
 
     acNone,
     acCtrlZ,
@@ -271,8 +272,9 @@ get_enggrpday_x2, get_enggrpmon_x2,
 get_review,
 get_current, get_current4, get_contacts3, get_calc1, get_calc2, get_calc3, get_stat1,
 histograms, get_echo_n_to_n, get_echo_n_to_1, get_echo_1_to_n,
-get_timeout_histogram35,get_logs35,get_counters35,
-get_logs40,get_counters40;
+get_timeout_histogram35, get_logs35,get_counters35,
+get_logs40, get_counters40,
+get_realtime_indices;
 
 var
   BoxStart:     TDateTime;
@@ -482,6 +484,8 @@ begin
     Items[Ord(acGetLogs40)]             := ('*события счетчиков Меркурий-234 СПОДЭС');
     Items[Ord(acGetCounters40)]         := ('*счетчики счетчиков Меркурий-234 СПОДЭС');
 
+    Items[Ord(acGetRealtimeIndices)] := ('*журнал календарных индексов');
+
     for i := 1 to Ord(acNone) do Items.Strings[i-1] := IntToStr(i) + '.  ' + Items.Strings[i-1];
   end;
 end;
@@ -689,6 +693,8 @@ begin
 
         Ord(acGetLogs40): begin BoxGetLogs40; Inc(iwBox); exit; end;
         Ord(acGetCounters40): begin BoxGetCounters40; Inc(iwBox); exit; end;
+
+        Ord(acGetRealtimeIndices): begin BoxGetRealtimeIndices; Inc(iwBox); exit; end;
 
         else ErrBox('Ошибка при задании списка запросов !');
       end;
@@ -1103,6 +1109,8 @@ begin
 
       acGetLogs40: ShowGetLogs40;
       acGetCounters40: ShowGetCounters40;
+
+      acGetRealtimeIndices: ShowGetRealtimeIndices;
     end;
 end;
 

@@ -41,7 +41,7 @@ begin
   InitPop(15);
 
   for Can := 0 to CANALS-1 do if CanalChecked(Can) then begin
-    a := PopInt;
+    a := PopIntBig;
     s := PackStrR('канал '+IntToStr(Can+1),GetColWidth);
     s := s + PackStrR(IntToStr(a)+' : '+IntToStr((a div 48)+1),GetColWidth);
     AddInfo(s);

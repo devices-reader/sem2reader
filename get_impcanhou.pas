@@ -66,7 +66,7 @@ begin
 
     for Hou := 0 to HOURS_IN_DAY-1 do begin
       for Can := 0 to CANALS-1 do if CanalChecked(Can) then begin
-        wT := PopInt;
+        wT := PopIntBig;
 
         mpwImpCDH[Can,ibDay,Hou] := wT;
         if wT <> $FFFF then begin

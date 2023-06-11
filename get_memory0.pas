@@ -83,7 +83,7 @@ begin
   AddInfo(PackStrR(IntToStr(cbWaitQuery),GetColWidth) + 'таймер опроса');
 
   InitPop(15+9);
-  w := PopInt();
+  w := PopIntBig();
   
   AddInfo('');
   AddInfo('');

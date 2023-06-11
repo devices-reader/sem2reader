@@ -54,7 +54,7 @@ begin
   AddInfo(PackStrR('6',GetColWidth)+PopBits2Str);
 
   AddInfo('');
-  for i := 1 to 4 do AddInfo(PackStrR('порт ' +IntToStr(i),GetColWidth)+IntToStr(PopInt));
+  for i := 1 to 4 do AddInfo(PackStrR('порт ' +IntToStr(i),GetColWidth)+IntToStr(PopIntBig));
 
   BoxRun;
 end;

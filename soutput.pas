@@ -20,9 +20,11 @@ procedure InitPopZero;
 procedure InitPopCRC;
 procedure InitPop(i: word);
 function Pop: byte;
-function PopInt: word;
+function PopIntBig: word;
 function PopIntLtl: word;
 function PopLong: longword;
+function PopLongBig: longword;
+function PopLongLtl: longword;
 function Bool2Str(i: byte): string;
 function PopBool2Str: string;
 function PopSwitch2Str: string;
@@ -99,7 +101,7 @@ begin
   Inc(iwIn);
 end;
 
-function PopInt: word;
+function PopIntBig: word;
 begin
   Result := Pop*$100 + Pop;
 end;
@@ -112,6 +114,16 @@ end;
 function PopLong: longword;
 begin
   Result := Pop*$1000000 + Pop*$10000 + Pop*$100 + Pop;
+end;
+
+function PopLongBig: longword;
+begin
+  Result := PopIntBig*$10000 + PopIntBig;
+end;
+
+function PopLongLtl: longword;
+begin
+  Result := PopIntLtl + PopIntLtl*$10000;
 end;
 
 function Bool2Str(i: byte): string;

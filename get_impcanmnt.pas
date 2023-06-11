@@ -99,7 +99,7 @@ begin
   for x := 0 to 40-1 do begin
     s := PackStrR(Int2Str(y div 20)+':'+Int2Str((y mod 20)*3)+'  -'+IntToStr(x),GetColWidth);
     for Can := 0 to CANALS-1 do if CanalChecked(Can) then
-      s := s + PackStrR(IntToStr(PopInt),GetColWidth);
+      s := s + PackStrR(IntToStr(PopIntBig),GetColWidth);
     AddInfo(s);    
     
     if y = 0 then y := 24*20 else  y := y-1;

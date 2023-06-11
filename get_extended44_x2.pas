@@ -66,8 +66,8 @@ begin
 
   c := Pop;
   d := Pop;
-  a := PopInt;
-  b := PopInt;
+  a := PopIntBig;
+  b := PopIntBig;
   if bMon = ibMinMon then begin
     AddInfo('');
     AddInfo(PackStrR('Признак включения режима: ' + Bool2Str(c),GetColWidth*2));
@@ -83,8 +83,8 @@ begin
 
     with mpValue44[bMon,Can] do begin
       bStatus := Pop;
-      cwPos := PopInt;
-      cwNeg := PopInt;
+      cwPos := PopIntBig;
+      cwNeg := PopIntBig;
       eValue := PopDouble;
       tiValue := PopTimes; 
 

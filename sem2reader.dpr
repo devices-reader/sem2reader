@@ -164,7 +164,9 @@ uses
   get_counters40 in 'get_counters40.pas',
   get_logs40 in 'get_logs40.pas',
   calc_maxpow in 'calc_maxpow.pas',
-  t_tariff in 't_tariff.pas';
+  t_tariff in 't_tariff.pas',
+  t_event in 't_event.pas',
+  get_realtime_indices in 'get_realtime_indices.pas';
 
 {$R *.RES}
 

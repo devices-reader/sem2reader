@@ -61,7 +61,7 @@ begin
     for i := 1 to 4 do s := s + PackStrR(Reals2StrR(PopReals),GetColWidth);
     s := s + PackStrR(PopTimes2Str,GetColWidth*2);
     s := s + PackStrR(PopBool2Str,GetColWidth);
-    s := s + PackStrR(IntToStr(PopInt)+' - '+IntToStr(PopInt),GetColWidth);
+    s := s + PackStrR(IntToStr(PopIntBig)+' - '+IntToStr(PopIntBig),GetColWidth);
     AddInfo(s);
   end;
   

@@ -57,7 +57,7 @@ begin
   Stop;
   InitPop(15);
 
-  a := PopInt;
+  a := PopIntBig;
   if bDay = ibMinDay then begin
     AddInfo('');
     AddInfo(PackStrR('Количество переходов через сутки: ' + IntToStr(a),GetColWidth*2));

@@ -66,11 +66,11 @@ type
     clbCanals: TCheckListBox;
     clbGroups: TCheckListBox;
     ppmCan: TPopupMenu;
-    mitSetCanals: TMenuItem;
-    mitClearCanals: TMenuItem;
+    mitSetAllCanals: TMenuItem;
+    mitClearAllCanals: TMenuItem;
     ppmGrp: TPopupMenu;
-    mitSetGroups: TMenuItem;
-    mitClearGroups: TMenuItem;
+    mitSetAllGroups: TMenuItem;
+    mitClearAllGroups: TMenuItem;
     chbCtrlZ: TCheckBox;
     pgcTop2: TPageControl;
     tbsEnergy: TTabSheet;
@@ -204,6 +204,16 @@ type
     btbStopChart: TBitBtn;
     chbChart: TCheckBox;
     sd_ChartToFile: TSaveDialog;
+    mitSetCanals1To32: TMenuItem;
+    mitSetCanals33To64: TMenuItem;
+    mitClearCanals1To32: TMenuItem;
+    mitClearCanals33To64: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    mitSetGroups1To16: TMenuItem;
+    mitClearGroups1To16: TMenuItem;
+    mitClearGroups17To32: TMenuItem;
+    mitSetGroups17To32: TMenuItem;
     procedure ShowConnect;
     procedure SetBaud(dwBaud: longword);
     procedure SetComNumber(wComNumber: word);
@@ -264,10 +274,20 @@ type
     procedure mitClearItemsClick(Sender: TObject);
     procedure MasksCreate;
     procedure MasksShow;
-    procedure mitSetCanalsClick(Sender: TObject);
-    procedure mitClearCanalsClick(Sender: TObject);
-    procedure mitSetGroupsClick(Sender: TObject);
-    procedure mitClearGroupsClick(Sender: TObject);
+    procedure SetCanals(bMin: byte; bMax: byte; fChecked: boolean);
+    procedure SetGroups(bMin: byte; bMax: byte; fChecked: boolean);
+    procedure mitSetAllCanalsClick(Sender: TObject);
+    procedure mitClearAllCanalsClick(Sender: TObject);
+    procedure mitSetCanals1To32Click(Sender: TObject);
+    procedure mitSetCanals33To64Click(Sender: TObject);
+    procedure mitClearCanals1To32Click(Sender: TObject);
+    procedure mitClearCanals33To64Click(Sender: TObject);
+    procedure mitSetAllGroupsClick(Sender: TObject);
+    procedure mitClearAllGroupsClick(Sender: TObject);
+    procedure mitSetGroups1To16Click(Sender: TObject);
+    procedure mitSetGroups17To32Click(Sender: TObject);
+    procedure mitClearGroups1To16Click(Sender: TObject);
+    procedure mitClearGroups17To32Click(Sender: TObject);
     procedure clbMainMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure pgcModeChange(Sender: TObject);
     procedure btbSocketOpenClick(Sender: TObject);
@@ -1200,40 +1220,94 @@ begin
   stbMask.Panels[1].Text := 'групп: ' + IntToStr(cbGrpMask);}
 end;
 
-procedure TfrmMain.mitSetCanalsClick(Sender: TObject);
+procedure TfrmMain.SetCanals(bMin: byte; bMax: byte; fChecked: boolean);
 var
   i:  byte;
 begin
   inherited;
-  with clbCanals do for i := 0 to CANALS-1 do Checked[i] := True;
+  with clbCanals do for i := bMin to bMax do Checked[i] := fChecked;
   MasksShow;
 end;
 
-procedure TfrmMain.mitClearCanalsClick(Sender: TObject);
+procedure TfrmMain.SetGroups(bMin: byte; bMax: byte; fChecked: boolean);
 var
   i:  byte;
 begin
   inherited;
-  with clbCanals do for i := 0 to CANALS-1 do Checked[i] := False;
+  with clbGroups do for i := bMin to bMax do Checked[i] := fChecked;
   MasksShow;
 end;
 
-procedure TfrmMain.mitSetGroupsClick(Sender: TObject);
-var
-  i:  byte;
+procedure TfrmMain.mitSetAllCanalsClick(Sender: TObject);
 begin
   inherited;
-  with clbGroups do for i := 0 to GROUPS-1 do Checked[i] := True;
-  MasksShow;
+  SetCanals(1-1, CANALS-1, true);
 end;
 
-procedure TfrmMain.mitClearGroupsClick(Sender: TObject);
-var
-  i:  byte;
+procedure TfrmMain.mitClearAllCanalsClick(Sender: TObject);
 begin
   inherited;
-  with clbGroups do for i := 0 to GROUPS-1 do Checked[i] := False;
-  MasksShow;
+  SetCanals(1-1, CANALS-1, false);
+end;
+
+procedure TfrmMain.mitSetCanals1To32Click(Sender: TObject);
+begin
+  inherited;
+  SetCanals(1-1, 32-1, true);
+end;
+
+procedure TfrmMain.mitSetCanals33To64Click(Sender: TObject);
+begin
+  inherited;
+  SetCanals(33-1, CANALS-1, true);
+end;
+
+procedure TfrmMain.mitClearCanals1To32Click(Sender: TObject);
+begin
+  inherited;
+  SetCanals(1-1, 32-1, false);
+end;
+
+procedure TfrmMain.mitClearCanals33To64Click(Sender: TObject);
+begin
+  inherited;
+  SetCanals(33-1, CANALS-1, false);
+end;
+
+procedure TfrmMain.mitSetAllGroupsClick(Sender: TObject);
+begin
+  inherited;
+  SetGroups(1-1, GROUPS-1, true);
+end;
+
+procedure TfrmMain.mitClearAllGroupsClick(Sender: TObject);
+begin
+  inherited;
+  SetGroups(1-1, GROUPS-1, false);
+end;
+
+procedure TfrmMain.mitSetGroups1To16Click(Sender: TObject);
+begin
+  inherited;
+  SetGroups(1-1, 16-1, true);
+end;
+
+procedure TfrmMain.mitSetGroups17To32Click(Sender: TObject);
+begin
+  inherited;
+  SetGroups(17-1, GROUPS-1, true);
+end;
+
+procedure TfrmMain.mitClearGroups1To16Click(Sender: TObject);
+begin
+  inherited;
+  SetGroups(1-1, 16-1, false);
+end;
+
+procedure TfrmMain.mitClearGroups17To32Click(Sender: TObject);
+begin
+  inherited;
+  SetGroups(17-1, GROUPS-1, false);
 end;
 
 procedure TfrmMain.clbMainMouseMove(Sender: TObject; Shift: TShiftState; X,

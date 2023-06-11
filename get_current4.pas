@@ -42,8 +42,8 @@ begin
   AddInfo('');
   AddInfo('Флаг перерасчета: ' + PopBool2Str());
 
-  for i := 0 to 64-1 do mpwCurrent40[i] := PopInt;
-  for i := 0 to 64-1 do mpwCurrent41[i] := PopInt;
+  for i := 0 to 64-1 do mpwCurrent40[i] := PopIntBig;
+  for i := 0 to 64-1 do mpwCurrent41[i] := PopIntBig;
 
   AddInfo('');
   AddInfo('Счетчики трехминутных переходов / Счетчики переполнения');

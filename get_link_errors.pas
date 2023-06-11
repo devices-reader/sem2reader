@@ -42,12 +42,12 @@ begin
   Stop;
 
   InitPopCRC;
-  for c := 0 to CANALS-1 do mpeLinkErrorsZ[c] := PopInt;
-  for c := 0 to CANALS-1 do mpeLinkErrorsC[c] := PopInt;
-  for c := 0 to CANALS-1 do mpeLinkErrors0[c] := PopInt;
-  for c := 0 to CANALS-1 do mpeLinkErrors1[c] := PopInt;
-  for c := 0 to CANALS-1 do mpeLinkErrors2[c] := PopInt;
-  for c := 0 to CANALS-1 do mpeLinkErrors3[c] := PopInt;
+  for c := 0 to CANALS-1 do mpeLinkErrorsZ[c] := PopIntBig;
+  for c := 0 to CANALS-1 do mpeLinkErrorsC[c] := PopIntBig;
+  for c := 0 to CANALS-1 do mpeLinkErrors0[c] := PopIntBig;
+  for c := 0 to CANALS-1 do mpeLinkErrors1[c] := PopIntBig;
+  for c := 0 to CANALS-1 do mpeLinkErrors2[c] := PopIntBig;
+  for c := 0 to CANALS-1 do mpeLinkErrors3[c] := PopIntBig;
 
   AddInfo('');    
   AddInfo('Статистика получасового опроса');

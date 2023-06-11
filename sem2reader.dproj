@@ -251,6 +251,8 @@
 			<DCCReference Include="get_logs40.pas"/>
 			<DCCReference Include="calc_maxpow.pas"/>
 			<DCCReference Include="t_tariff.pas"/>
+			<DCCReference Include="t_event.pas"/>
+			<DCCReference Include="get_realtime_indices.pas"/>
 			<None Include="sem2reader.todo"/>
 			<BuildConfiguration Include="Debug">
 				<Key>Cfg_2</Key>

@@ -65,19 +65,19 @@ begin
   AddInfo('флаг              ' + IntToStr(Pop));
 
   AddInfo('');
-  ibSoftMnt := PopInt;
-  iwHardMnt := PopInt;
+  ibSoftMnt := PopIntBig;
+  iwHardMnt := PopIntBig;
   AddInfo('указатель 3 мин.  ' + IntToStr(ibSoftMnt) + ' ' + IntToStr(iwHardMnt));
-  ibSoftHou := PopInt;
-  iwHardHou := PopInt;
+  ibSoftHou := PopIntBig;
+  iwHardHou := PopIntBig;
   AddInfo('указатель 30 мин. ' + IntToStr(ibSoftHou) + ' ' + IntToStr(iwHardHou));
-  ibSoftDay := PopInt;
-  iwHardDay := PopInt;
+  ibSoftDay := PopIntBig;
+  iwHardDay := PopIntBig;
   AddInfo('указатель сутки   ' + IntToStr(ibSoftDay) + ' ' + IntToStr(iwHardDay));
-  ibSoftMon := PopInt;
-  iwHardMon := PopInt;
+  ibSoftMon := PopIntBig;
+  iwHardMon := PopIntBig;
   AddInfo('указатель мес€цы  ' + IntToStr(ibSoftMon) + ' ' + IntToStr(iwHardMon));
-  AddInfo('указатель times   ' + IntToStr(PopInt) + ' ' + IntToStr(PopInt));
+  AddInfo('указатель times   ' + IntToStr(PopIntBig) + ' ' + IntToStr(PopIntBig));
 
   AddInfo('');
   AddInfo('счетчик 1 сек.    ' + IntToStr(PopLong));
@@ -87,13 +87,13 @@ begin
   AddInfo('счетчик 3 мин.    ' + IntToStr(cdwMinutes3));
   cdwMinutes30 := PopLong;
   AddInfo('счетчик 30 мин.   ' + IntToStr(cdwMinutes30));
-  cwDay := PopInt;
+  cwDay := PopIntBig;
   AddInfo('счетчик дни       ' + IntToStr(cwDay));
-  AddInfo('счетчик мес€цы    ' + IntToStr(PopInt));
-  AddInfo('счетчик годы      ' + IntToStr(PopInt));
+  AddInfo('счетчик мес€цы    ' + IntToStr(PopIntBig));
+  AddInfo('счетчик годы      ' + IntToStr(PopIntBig));
 
   AddInfo('');
-  AddInfo('указатель diagram ' + IntToStr(PopInt) + ' ' + IntToStr(PopInt));
+  AddInfo('указатель diagram ' + IntToStr(PopIntBig) + ' ' + IntToStr(PopIntBig));
 
   AddInfo('');
 {

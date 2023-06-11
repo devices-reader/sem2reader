@@ -63,7 +63,7 @@ begin
   l := TStringList.Create;
   s := PackStrR(IntToStr(ibBlock*500), GetColWidth);
   for i := 0 to 500-1 do begin
-    j := PopInt;
+    j := PopIntBig;
     if (ibBlock*500+i < PAGES) then mpbStat1[ibBlock*500+i] := j;
 
     if (j = $FFFF) then z := '-' else z := IntToStr(j);

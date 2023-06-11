@@ -83,47 +83,47 @@ begin
   l.add('');
   l.add('*Чтение состояния памяти (версия 1)');
   l.add('');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при сигнале ''Занято''');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при сравнении');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при стирании страницы');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при чтении страницы');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при записи страницы');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при сравнении');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при стирании страницы');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при чтении страницы');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при записи страницы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при сигнале ''Занято''');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при сравнении');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при стирании страницы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при чтении страницы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при записи страницы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при сравнении');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при стирании страницы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при чтении страницы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при записи страницы');
 
   l.add('');
   for i := 1 to 4 do Pop;
 
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала памяти');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес служебной области');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес метки запуска');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала импульсов по получасам за сутки');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала импульсов по суткам');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала импульсов по месяцам');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала максимумов мощности по суткам');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала максимумов мощности по месяцам');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'адрес начала счётчиков по месяцам');
-  wPagesEnd := PopInt;
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала памяти');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес служебной области');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес метки запуска');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала импульсов по получасам за сутки');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала импульсов по суткам');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала импульсов по месяцам');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала максимумов мощности по суткам');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала максимумов мощности по месяцам');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'адрес начала счётчиков по месяцам');
+  wPagesEnd := PopIntBig;
   l.add(PackStrR(IntToStr(wPagesEnd),GetColWidth) + 'адрес конца памяти');
 
   l.add('');
   for i := 1 to 6 do Pop;
 
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество срабатываний WDT');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество срабатываний WDT');
 
   l.add('');
-  l.add(PackStrR('0x' + IntToHex(PopInt,4),GetColWidth) + 'версия программы');
-  l.add(PackStrR(IntToStr(PopInt),GetColWidth) + 'заводской номер');
+  l.add(PackStrR('0x' + IntToHex(PopIntBig,4),GetColWidth) + 'версия программы');
+  l.add(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'заводской номер');
   l.add(PackStrR(IntToStr(Pop),GetColWidth) + 'логический номер');
 
-  pwCorrect     := PopInt;
-  pwSystem      := PopInt;
-  pwSensors     := PopInt;
-  pwEvents      := PopInt;
+  pwCorrect     := PopIntBig;
+  pwSystem      := PopIntBig;
+  pwSensors     := PopIntBig;
+  pwEvents      := PopIntBig;
 
-  cwRecord      := PopInt;
+  cwRecord      := PopIntBig;
   bRecordBlock  := Pop;
   bRecordSize   := Pop;
 
@@ -136,33 +136,33 @@ begin
   cdwMinute1    := PopLong;
   cdwMinute3    := PopLong;
   cdwMinute30   := PopLong;
-  cwDay         := PopInt;
-  cwMonth       := PopInt;
-  cwYear        := PopInt;
+  cwDay         := PopIntBig;
+  cwMonth       := PopIntBig;
+  cwYear        := PopIntBig;
 
   for i := 1 to 4 do Pop;
 
-  pwModems      := PopInt;
+  pwModems      := PopIntBig;
   cdwModems     := PopLong;
 
-  pwPowDayGrp2  := PopInt;
-  pwCntMonCan2  := PopInt;
+  pwPowDayGrp2  := PopIntBig;
+  pwCntMonCan2  := PopIntBig;
 
-  pwMessages  := PopInt;
+  pwMessages  := PopIntBig;
   cdwMessages := PopLong;
 
-  pwDefDayCan := PopInt;
-  pwDefMonCan := PopInt;
+  pwDefDayCan := PopIntBig;
+  pwDefMonCan := PopIntBig;
 
-  pwDiagram   := PopInt;
-  pwCntDayCan7:= PopInt;
+  pwDiagram   := PopIntBig;
+  pwCntDayCan7:= PopIntBig;
 
-  cwRecord2    := PopInt;
-  wRecord2Size := PopInt;
+  cwRecord2    := PopIntBig;
+  wRecord2Size := PopIntBig;
 
-  pwAuxiliary  := PopInt;
+  pwAuxiliary  := PopIntBig;
   cdwAuxiliary := PopLong;
-  wPages       := PopInt;
+  wPages       := PopIntBig;
 
   l.add('');
   l.add(PackStrR(IntToStr(cwRecord),    GetColWidth) + 'журналы событий: количество записей общее');

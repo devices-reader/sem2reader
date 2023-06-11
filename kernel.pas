@@ -151,7 +151,7 @@ uses SysUtils;
 
 function GetDeviceName(i: byte): string;
 const
-  DEVICES     = 1+40;
+  DEVICES     = 1+41;
   mpDevices:  array[0..DEVICES-1] of device_ =
   (
     (stName: 'нет'            ),
@@ -194,7 +194,8 @@ const
     (stName: 'СЕ303 NNCL2'    ),
     (stName: 'СЕ318'          ),
     (stName: 'СЕ318 S39'      ),
-    (stName: 'Меркурий-234 СПОДЭС')
+    (stName: 'Меркурий-234 СПОДЭС'),
+    (stName: 'СЕ318 v148'     )
   );
   
 begin

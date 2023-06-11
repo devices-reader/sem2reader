@@ -57,11 +57,11 @@ begin
   for Can := 0 to CANALS-1 do if CanalChecked(Can) then begin
     s := PackStrR('канал '+IntToStr(Can+1),GetColWidth);
     s := s + PackStrR(PopBool2Str,GetColWidth);
-    x := PopInt;
+    x := PopIntBig;
     s := s + PackStrR(IntToStr(x)+' : '+IntToStr((x div 48)+1),GetColWidth);
-    x := PopInt;
+    x := PopIntBig;
     s := s + PackStrR(IntToStr(x)+' : '+IntToStr((x div 48)+1),GetColWidth);
-    x := PopInt;
+    x := PopIntBig;
     s := s + PackStrR(IntToHex(x,4),GetColWidth);
     y := PopLong;
     s := s + PackStrR(IntToHex(y,5),GetColWidth);

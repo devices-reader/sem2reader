@@ -62,7 +62,7 @@ begin
   AddInfo('Таймауты P98 (счетчик/время)');
   for Prt := 1 to 4 do begin
     s := PackStrR('порт '+IntToStr(Prt),GetColWidth);
-    s := s + PackStrR(IntToStr(PopInt),GetColWidth);
+    s := s + PackStrR(IntToStr(PopIntBig),GetColWidth);
     s := s + IntToStr(PopLong);
     AddInfo(s);
   end;
@@ -71,7 +71,7 @@ begin
   AddInfo('Таймауты P97 (счетчик/время)');
   for Prt := 1 to 4 do begin
     s := PackStrR('порт '+IntToStr(Prt),GetColWidth);
-    s := s + PackStrR(IntToStr(PopInt),GetColWidth);
+    s := s + PackStrR(IntToStr(PopIntBig),GetColWidth);
     s := s + IntToStr(PopLong);
     AddInfo(s);
   end;
@@ -99,9 +99,9 @@ begin
 
   AddInfo('');
   AddInfo('Статусы');
-  AddInfo(PackStrR('статус 1',GetColWidth) + IntToStr(PopInt));
-  AddInfo(PackStrR('статус 2',GetColWidth) + IntToStr(PopInt));
-  AddInfo(PackStrR('статус 3',GetColWidth) + IntToStr(PopInt));
+  AddInfo(PackStrR('статус 1',GetColWidth) + IntToStr(PopIntBig));
+  AddInfo(PackStrR('статус 2',GetColWidth) + IntToStr(PopIntBig));
+  AddInfo(PackStrR('статус 3',GetColWidth) + IntToStr(PopIntBig));
 
   Ver := Pop;
   if (Ver >= 1) then begin

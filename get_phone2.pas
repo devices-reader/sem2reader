@@ -91,7 +91,7 @@ begin
 
   AddInfo('');      
   for i := 1 to 10 do
-    AddInfo(PackStrR(mpCode[i],3*GetColWidth) + PackStrR(IntToStr(PopInt),GetColWidth) + PopTimes2Str);
+    AddInfo(PackStrR(mpCode[i],3*GetColWidth) + PackStrR(IntToStr(PopIntBig),GetColWidth) + PopTimes2Str);
 
   AddInfo('');      
   AddInfo(PackStrR('буфер подготовки событий:',3*GetColWidth) + PopPhone2(8));

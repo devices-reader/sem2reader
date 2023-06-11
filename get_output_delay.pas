@@ -40,7 +40,7 @@ begin
   AddInfo('');    
   for Prt := 1 to 4 do begin
     s := PackStrR('порт '+IntToStr(Prt),GetColWidth);
-    s := s + IntToStr(PopInt);
+    s := s + IntToStr(PopIntBig);
     AddInfo(s);
   end;  
   

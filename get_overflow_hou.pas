@@ -39,7 +39,7 @@ begin
 
   InitPopCRC;
 
-  for Can := 0 to CANALS-1 do mpcwOveflowHou[Can] := PopInt;
+  for Can := 0 to CANALS-1 do mpcwOveflowHou[Can] := PopIntBig;
 
   AddInfo('');
   AddInfo('Cтатистика переполнения получасовых графиков');

@@ -34,8 +34,8 @@ begin
   AddInfo('флаг:                      ' + Bool2Str(Pop));
   AddInfo('размер пакета:             ' + IntToStr(Pop));
   AddInfo('счетчики размера пакета:   ' + IntToStr(Pop)+' '+IntToStr(Pop)+' '+IntToStr(Pop)+' '+IntToStr(Pop));
-  AddInfo('таймаут пакета:            ' + IntToStr(PopInt));
-  AddInfo('счетчики таймаута пакета:  ' + IntToStr(PopInt)+' '+IntToStr(PopInt)+' '+IntToStr(PopInt)+' '+IntToStr(PopInt));
+  AddInfo('таймаут пакета:            ' + IntToStr(PopIntBig));
+  AddInfo('счетчики таймаута пакета:  ' + IntToStr(PopIntBig)+' '+IntToStr(PopIntBig)+' '+IntToStr(PopIntBig)+' '+IntToStr(PopIntBig));
   AddInfo('статус портов текущий:     ' + IntToStr(Pop)+' '+IntToStr(Pop)+' '+IntToStr(Pop)+' '+IntToStr(Pop));
   AddInfo('статус портов сохраненный: ' + IntToStr(Pop)+' '+IntToStr(Pop)+' '+IntToStr(Pop)+' '+IntToStr(Pop));
 

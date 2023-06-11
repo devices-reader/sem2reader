@@ -51,21 +51,21 @@ begin
     end;
     InitGetRecords(wFreePageSize);
 
-    AddInfo('версия:               ' + IntToStr(j) +'.' + IntToStr(Pop) + '.' + IntToHex(PopInt,4));
-    AddInfo('номер сборки:         ' + IntToStr(PopInt));
+    AddInfo('версия:               ' + IntToStr(j) +'.' + IntToStr(Pop) + '.' + IntToHex(PopIntBig,4));
+    AddInfo('номер сборки:         ' + IntToStr(PopIntBig));
     AddInfo('дата сборки:          ' + PopTimes2Str);
-    AddInfo('заводской номер:      ' + IntToStr(PopInt));
+    AddInfo('заводской номер:      ' + IntToStr(PopIntBig));
     AddInfo('логический номер:     ' + IntToStr(Pop));
 
     if (j > 2) then begin
       AddInfo('');
       AddInfo('количество каналов:   ' + IntToStr(Pop));
       AddInfo('количество групп:     ' + IntToStr(Pop));
-      AddInfo('количество трехминут: ' + IntToStr(PopInt));
-      k := PopInt;
+      AddInfo('количество трехминут: ' + IntToStr(PopIntBig));
+      k := PopIntBig;
       AddInfo('количество получасов: ' + IntToStr(k)+' ('+IntToStr(k div 48)+' суток)');
-      AddInfo('количество суток:     ' + IntToStr(PopInt));
-      AddInfo('количество месяцев:   ' + IntToStr(PopInt));
+      AddInfo('количество суток:     ' + IntToStr(PopIntBig));
+      AddInfo('количество месяцев:   ' + IntToStr(PopIntBig));
     end;
   end
   else

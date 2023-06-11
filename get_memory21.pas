@@ -96,7 +96,7 @@ begin
   l.Add('');
   for c := 1 to 64 do begin
     s := PackStrR('канал ' + IntToStr(c), GetColWidth);
-    s := s + PackStrR(IntToStr(PopInt), GetColWidth);
+    s := s + PackStrR(IntToStr(PopIntBig), GetColWidth);
     l.Add(s);
   end;
   AddInfoAll(l);

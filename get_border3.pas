@@ -39,7 +39,7 @@ begin
   InitPopCRC;
 
   for Can := 0 to CANALS-1 do if CanalChecked(Can) then begin
-    a := PopInt;
+    a := PopIntBig;
     s := PackStrR('канал '+IntToStr(Can+1),GetColWidth);
     s := s + PackStrR(IntToStr(a),GetColWidth);
     AddInfo(s);

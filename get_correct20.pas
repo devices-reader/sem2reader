@@ -48,27 +48,27 @@ begin
 
   AddInfo('');
   AddInfo('Статистика СИМЭК-48:');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество требований коррекции');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество ошибочных запросов');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных запросов');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество состояний: ошибка');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество состояний: ОК');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество ошибок: ошибка формата времени');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество ошибок: даты различны');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество ошибок: получасы различны');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных коррекций: всего');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных коррекций: с разницей менее 2 секунд');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных коррекций: с разницей менее 5 секунд');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных коррекций: с разницей более 5 секунд');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных коррекций: с разницей более 1 минуты');
-  AddInfo(PackStrR(IntToStr(PopInt),6) + 'количество успешных коррекций: с разницей более 10 минут');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество требований коррекции');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество ошибочных запросов');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных запросов');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество состояний: ошибка');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество состояний: ОК');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество ошибок: ошибка формата времени');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество ошибок: даты различны');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество ошибок: получасы различны');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных коррекций: всего');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных коррекций: с разницей менее 2 секунд');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных коррекций: с разницей менее 5 секунд');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных коррекций: с разницей более 5 секунд');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных коррекций: с разницей более 1 минуты');
+  AddInfo(PackStrR(IntToStr(PopIntBig),6) + 'количество успешных коррекций: с разницей более 10 минут');
 
-  PopInt;
-  PopInt;
-  PopInt;
-  PopInt;
-  PopInt;
-  PopInt;
+  PopIntBig;
+  PopIntBig;
+  PopIntBig;
+  PopIntBig;
+  PopIntBig;
+  PopIntBig;
 
   AddInfo('');
   AddInfo('Время до последней коррекции СИМЭК-48:    '+PopTimes2Str);

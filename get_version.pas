@@ -33,22 +33,22 @@ begin
 
   AddTerminal('');
   AddTerminal('Статистика');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при сигнале ''Занято''');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при сравнении');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при стирании страницы');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при чтении страницы');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество повторов при записи страницы');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при сравнении');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при стирании страницы');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при чтении страницы');
-  AddTerminal(PackStrR(IntToStr(PopInt),GetColWidth) + 'количество ошибок при записи страницы');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при сигнале ''Занято''');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при сравнении');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при стирании страницы');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при чтении страницы');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество повторов при записи страницы');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при сравнении');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при стирании страницы');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при чтении страницы');
+  AddTerminal(PackStrR(IntToStr(PopIntBig),GetColWidth) + 'количество ошибок при записи страницы');
 
   InitPop(65);
 
   AddInfo('');
   AddInfo('Версия');
-  AddInfo('контрольная сумма: '+IntToHex(PopInt,4));
-  AddInfo('заводской номер:   '+IntToStr(PopInt));
+  AddInfo('контрольная сумма: '+IntToHex(PopIntBig,4));
+  AddInfo('заводской номер:   '+IntToStr(PopIntBig));
   AddInfo('логический номер:  '+IntToStr(Pop));
 
   BoxRun;

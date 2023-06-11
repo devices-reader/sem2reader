@@ -31,7 +31,7 @@ const
 
 implementation
 
-uses SysUtils, kernel, support, soutput, main, timez, realz, box, progress, t_entry;
+uses SysUtils, Classes, kernel, support, soutput, main, timez, realz, box, progress, t_entry, t_event;
 
 const
   quGetRecords:   querys = (Action: acGetRecords0;  cwOut: 7+3; cwIn: 0; bNumber: $FF);
@@ -98,12 +98,13 @@ begin
   bPage := 0;
   bClass := bT;
 
+  InitEvents;
+
   QueryGetRecords;
 end;
 
 procedure QueryGetRecordsRunX(bT: byte);
 begin
-
   cwRec := 0;
   wPage := frmMain.updRecordMin.Position;
   bClass := bT;
@@ -114,6 +115,9 @@ begin
     Max := frmMain.updRecordMax.Position-1;
   end;
 }
+
+  InitEvents;
+
   QueryGetRecordsX;
 end;
 
@@ -127,49 +131,49 @@ begin
 end;
 
 procedure BoxGetRecords1;
-begin  
-  AddInfo('');    
+begin
+  AddInfo('');
   AddInfo('Журнал состояния системы:');
-  AddInfo('');    
-  
+  AddInfo('');
+
   QueryGetRecordsRun(1);
 end;
 
 procedure BoxGetRecords2;
-begin  
-  AddInfo('');    
+begin
+  AddInfo('');
   AddInfo('Журнал состояния счётчиков:');
-  AddInfo('');    
-  
+  AddInfo('');
+
   QueryGetRecordsRun(2);
 end;
 
 procedure BoxGetRecords3;
-begin  
-  AddInfo('');    
+begin
+  AddInfo('');
   AddInfo('Журнал внешних событий:');
-  AddInfo('');    
-  
+  AddInfo('');
+
   QueryGetRecordsRun(3);
 end;
 
 procedure BoxGetRecords4;
-begin  
-  AddInfo('');    
+begin
+  AddInfo('');
   AddInfo('Журнал состояния модемов:');
-  AddInfo('');    
+  AddInfo('');
 
   QueryGetRecordsRun(4);
-end;  
+end;
 
 procedure BoxGetRecords5;
-begin  
-  AddInfo('');    
+begin
+  AddInfo('');
   AddInfo('Журнал СМС-контроля:');
-  AddInfo('');    
-  
+  AddInfo('');
+
   QueryGetRecordsRun(5);
-end;  
+end;
 
 procedure BoxGetRecordsX0;
 begin
@@ -400,9 +404,11 @@ var
 begin
   tm := PopTimes();
   Result := PackStrL(Times2Str(tm),20) + ' ' +
-            PackStrL(IntToStr((PopInt shl 16)+PopInt),4) + ' ';
+            PackStrL(IntToStr((PopIntBig shl 16)+PopIntBig),4) + ' ';
 
   bRecCode := Pop;
+
+  AddEvent(bRecCode);
 
   Result := Result + PackStrL(IntToStr(bRecCode),3) + '  ';
 
@@ -523,6 +529,10 @@ begin
 
     114: stT := 'плохая связь: '+IntToStr(mpbRec[0])+' из '+IntToStr(mpbRec[1])+' (лимит '+IntToStr(mpbRec[2])+' из '+IntToStr(mpbRec[1]) + ')';
 
+    115: stT := 'приостановка опроса при переходе на следующий канал';
+    116: stT := 'приостановка опроса при опросе получасовых графиков';
+    117: stT := 'продолжение опроса опроса';
+
     126: stT := 'регул. опрос: '+IntToStr(mpbRec[1]+1)+'.'+IntToStr(mpbRec[2])+'.'+IntToStr(mpbRec[3])+'.'+IntToStr(mpbRec[4])+'.'+IntToStr(mpbRec[5]+1);
     127: stT := 'ручной опрос: '+IntToStr(mpbRec[1]+1)+'.'+IntToStr(mpbRec[2])+'.'+IntToStr(mpbRec[3])+'.'+IntToStr(mpbRec[4])+'.'+IntToStr(mpbRec[5]+1);
     128: stT := 'готовность: '+IntToStr(mpbRec[1]*$100+mpbRec[2])+' ========';
@@ -637,7 +647,7 @@ begin
     Stop;
     InitPopCRC;
     PopLong;
-    PopInt;
+    PopIntBig;
 
     for i := 0 to GetRecordBlock(wFreePageSize)-1 do begin
      stT := GetRecord;
@@ -663,14 +673,16 @@ end;
 
 procedure ShowGetRecordsX;
 var
-  i:    word;
+  i,j:  word;
+  p,w:  word;
   stT:  string;
+  l:    TStringList;
 begin
   with frmMain do begin
     Stop;
     InitPopCRC;
     PopLong;
-    PopInt;
+    PopIntBig;
 
     for i := 0 to GetRecordBlock(wFreePageSize)-1 do begin
      stT := GetRecord;
@@ -692,6 +704,8 @@ begin
     end
     else begin
       AddInfoAll(ResultEntry());
+      AddInfoAll(ResultEvents());
+
       RunBox;
     end;
   end;

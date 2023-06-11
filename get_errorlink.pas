@@ -38,7 +38,7 @@ begin
   AddInfo('');
   for Dig := 1 to 64 do begin
     s := PackStrR('канал ' + IntToStr(Dig),GetColWidth);
-    s := s + PackStrR(IntToStr(PopInt),GetColWidth);
+    s := s + PackStrR(IntToStr(PopIntBig),GetColWidth);
     AddInfo(s);
   end;
 

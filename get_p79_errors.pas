@@ -37,7 +37,7 @@ begin
   Stop;
 
   InitPopCRC;
-  for c := 0 to CANALS-1 do mpeP79Errors[c] := PopInt;
+  for c := 0 to CANALS-1 do mpeP79Errors[c] := PopIntBig;
 
   AddInfo('');    
   AddInfo('Статистика опроса счетчиков на начало суток');
